@@ -5,10 +5,10 @@ import RegistrationForm from './registration-form';
 export function Registration(){
   return (
     <div>
-    <h1>Create An Account</h1>
-    <main>
-    <RegistrationForm />
-    </main>
+      <h1>Create An Account</h1>
+      <main>
+        <RegistrationForm />
+      </main>
     </div>
   );
 }

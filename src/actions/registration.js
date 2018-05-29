@@ -1,17 +1,14 @@
-export const REQUEST_REGISTER_USER = 'REQUEST_REGISTER_USER';
-export const requestRegisterUser = () => {
-  return {
-    type : REQUEST_REGISTER_USER
-  };
+import {API_BASE_URL} from '../config';
+
+export const registerUser = user => dispatch => {
+  return fetch(`${API_BASE_URL}/api/users`, {
+    method : 'POST',
+    headers : {
+      'content-type' : 'application/json'
+    },
+    body : JSON.stringify(user)
+  })
+    .then(results => results.json())
+    //TO DO- handle form errors
+    .catch(err => console.log(err));
 };
-
-export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export const registerUserSuccess = (token) => {
-  return {
-    type : REGISTER_USER_SUCCESS,
-    token
-  };
-};
-
-
-export const registerUser = values => dispatch => {};
