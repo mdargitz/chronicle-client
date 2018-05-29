@@ -5,5 +5,13 @@ export const requestRegisterUser = () => {
   };
 };
 
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const registerUserSuccess = (token) => {
+  return {
+    type : REGISTER_USER_SUCCESS,
+    token
+  };
+};
+
 
 export const registerUser = values => dispatch => {};

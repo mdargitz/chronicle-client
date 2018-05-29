@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import Input from './input';
-import {required, notEmpty, noSpaces, minLength, maxLength} from '../validators';
+import {required, notEmpty, noSpaces, minLength, maxLength, confirmPassword} from '../validators';
 
 export class RegistrationForm extends React.Component {
 
@@ -15,7 +15,7 @@ export class RegistrationForm extends React.Component {
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field 
           name="username"
-          type="input"
+          type="text"
           element="input"
           component={Input}
           label="Username"
@@ -23,7 +23,7 @@ export class RegistrationForm extends React.Component {
         />
         <Field 
           name="password"
-          type="input"
+          type="password"
           element="input"
           component={Input}
           label="Password"
@@ -31,11 +31,11 @@ export class RegistrationForm extends React.Component {
         />
         <Field 
           name="confirm-password"
-          type="input"
+          type="password"
           element="input"
           component={Input}
           label="Confirm Password"
-          validate={[required, notEmpty, noSpaces, minLength, maxLength]}
+          validate={[required, notEmpty, confirmPassword]}
         />
         <button type="submit"> Sign Up!</button>
       </form>)

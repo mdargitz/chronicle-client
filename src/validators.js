@@ -7,3 +7,6 @@ export const noSpaces = value => value.trim().length === value.length ? undefine
 export const minLength = value => value.length >= 8 ? undefined : 'Must be at least 8 characters long';
 
 export const maxLength = value => value.length <= 72 ? undefined : 'May not be greater than 72 characters';
+
+export const confirmPassword = (value, allValues) => value === allValues.password ? undefined : 'Passwords must match';
+  
