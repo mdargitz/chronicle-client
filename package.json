@@ -8,7 +8,8 @@
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
-    "redux-forms": "^1.0.0-3",
+    "redux": "^4.0.0",
+    "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
