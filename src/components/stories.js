@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { getStories } from '../actions/stories';
 import StoryList from './story-list';
-import AddNew from './add-new';
+import AddNewStory from './add-new-story';
 import {Redirect} from 'react-router-dom';
 import mustLogin from './must-login';
 
@@ -25,7 +25,7 @@ export class Stories extends React.Component {
       return (
         <div>
           <h1>HOME!</h1>
-          <AddNew />
+          <AddNewStory />
           <StoryList />
         </div>    
       );
@@ -34,7 +34,7 @@ export class Stories extends React.Component {
     return (
       <div>
         <h1>HOME!</h1>
-        <AddNew />
+        <AddNewStory />
       </div> );
        
   }}

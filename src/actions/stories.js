@@ -44,6 +44,22 @@ export const getStories = () => dispatch => {
  
 };
 
+//Create a Story
+export const createStory = title => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/stories`, {
+    method: 'POST',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({title}) 
+  })
+    .then(()=> dispatch(getStories()))
+    .catch(() => console.log('an error!'));
+};
+
 //Delete a Story
 export const deleteStory = id => dispatch => {
   dispatch(requestStories());
