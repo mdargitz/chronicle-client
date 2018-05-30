@@ -19,7 +19,6 @@ const storyReducer = (state=initialState, action) =>{
     action.data.map(story => {
       return stories[story.id] = {...story};
     });
-    // console.log('stories success!');
     return {
       ...state,
       loading: false,

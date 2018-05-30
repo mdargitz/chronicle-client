@@ -24,7 +24,7 @@ export const storiesError = error => {
 
 //Get all Stories (general info)
 export const getStories = () => dispatch => {
-  // console.log('I been called!');
+  
   dispatch(requestStories());
   const token = localStorage.getItem('token');
   return fetch(`${API_BASE_URL}/api/stories`, {
@@ -39,6 +39,8 @@ export const getStories = () => dispatch => {
       throw new Promise.reject(result.statusText);
     })
     .then(data => dispatch(storiesSuccess(data)))
-    .catch(err => dispatch(storiesError(err)));
+    // .catch(err => dispatch(storiesError(err)));
+    .catch(err => console.log(err));
+ 
 };
 

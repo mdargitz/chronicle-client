@@ -10,26 +10,24 @@ import {connect} from 'react-redux';
 export class StoryCard extends React.Component {
 
   render() {
-    console.log(this.props.id);
 
     const title = this.props.story.title;
-    const img = this.props.story.img;
+    const img = this.props.story.picture;
+    console.log(img);
 
     return(
       <div>
         <img src={img} alt={`${title} banner image`} />
         <h3>{title}</h3>
-        <button />
+        <button>Edit</button>
+        <button>Delete</button>
       </div>
     );
   }
   
 }
 
-//should be able to pull storyId from router, check docs
-
 const mapStateToProps = (state, props) => {
-  console.log(props.id);
   return {
     story : state.content.stories[props.id]
   };};

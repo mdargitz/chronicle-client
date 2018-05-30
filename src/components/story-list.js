@@ -5,6 +5,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import StoryCard from './story-card';
 
+
 export class StoryList extends React.Component {
 
   render () {

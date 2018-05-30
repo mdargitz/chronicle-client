@@ -1,17 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { getStories } from '../actions/stories';
-// import Card from './card';
 import StoryList from './story-list';
+import AddNew from './add-new';
+import {Redirect} from 'react-router-dom';
+import mustLogin from './must-login';
 
 export class Stories extends React.Component {
   componentWillMount(){
-    // console.log('getting stories');
     this.props.dispatch(getStories());
   }
 
   render(){
-    console.log('I am rendering! My story status is: ' , this.props.stories, 'and loading is', this.props.loading);
+
     if (this.props.loading){
       return <div>Loading...</div>;
     }
@@ -21,17 +22,21 @@ export class Stories extends React.Component {
     }
 
     if (Object.keys(this.props.stories).length > 0 ){
-      // console.log('This props stories is now' + this.props.stories);
       return (
         <div>
           <h1>HOME!</h1>
+          <AddNew />
           <StoryList />
-          {/* <Card type="stories" id="3"/> */}
         </div>    
       );
     }
-    return <div />;
-
+    //TO DO- render the list always, just dont have anything if object is empty
+    return (
+      <div>
+        <h1>HOME!</h1>
+        <AddNew />
+      </div> );
+       
   }}
 
 const mapStateToProps = state => {
@@ -41,4 +46,4 @@ const mapStateToProps = state => {
     stories : state.content.stories
   };
 };
-export default connect(mapStateToProps)(Stories);
+export default mustLogin()(connect(mapStateToProps)(Stories));
