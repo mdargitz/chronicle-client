@@ -12,33 +12,34 @@ const loginReducuer = (state = initialState, action ) => {
     return {
       ...state,
       token : action.token
-    }
+    };
   }
   if (action.type === REMOVE_STATE_TOKEN){
     return {
       ...state,
       token : null
-    }
+    };
   }
   if (action.type === REQUEST_LOGIN){
     return {
       ...state,
       loading : true
-    }
+    };
   }
   if (action.type === LOGIN_ERROR){
     return {
       ...state,
       error : action.error,
       loading: false
-    }
+    };
   } 
   if (action.type === LOGIN_SUCCESS){
+    //run thunk to dispach(pushtoStories), push to stories location react-router
     return {
       ...state,
       loading: false,
       currentUser : action.currentUser
-    }
+    };
   }
   else{
     return state;

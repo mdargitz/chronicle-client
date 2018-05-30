@@ -58,7 +58,6 @@ export const login = (username, password) => dispatch => {
     body : JSON.stringify({username, password}) 
   })
     .then(result => result.json())
-    .then(({authToken}) => {
-      storeToken(authToken, dispatch)})
+    .then(({authToken}) => storeToken(authToken, dispatch))
     .catch(e => console.log(e));
 };

@@ -1,24 +1,37 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import Input from './input';
+import {login} from '../actions/login';
+import { required, notEmpty } from '../validators';
+import {withRouter} from 'react-router-dom';
 
 export class LoginForm extends React.Component {
   
+  onSubmit(values){
+    const {username, password} = values;
+    this.props.dispatch(login(username, password))
+      .then(this.props.history.push('/stories'));
+  }
+
   render(){
     return(
-      <form>
+      <form
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field 
-          type="input" 
+          type="text" 
           element="input"
           label="Username" 
           name="username"
-          component={Input}/>
+          component={Input}
+          validate={[required, notEmpty]}/>
         <Field 
-          type="input" 
+          type="password" 
           element="input"
           label="Password" 
           name="password"
-          component={Input}/>
+          component={Input}
+          validate={[required, notEmpty]}/>
+        <button type="submit">Get Started!</button>
       </form>
     );
   }
@@ -27,4 +40,4 @@ export class LoginForm extends React.Component {
 
 export default reduxForm({
   form : 'loginForm'
-})(LoginForm);
+})((withRouter)(LoginForm));
