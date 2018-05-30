@@ -1,4 +1,4 @@
-import { REQUEST_STORIES, STORIES_SUCCESS, STORIES_ERROR } from '../actions/stories';
+import { REQUEST_STORIES, STORIES_SUCCESS, STORIES_ERROR, CHARACTERS_SUCCESS } from '../actions/stories';
 
 const initialState = {
   loading: false,
@@ -31,6 +31,22 @@ const storyReducer = (state=initialState, action) =>{
       ...state,
       loading: false,
       error : action.error
+    };
+  }
+
+  if(action.type === CHARACTERS_SUCCESS){
+    //TO DO - clean this up if possible?
+    const updatedStory = Object.assign({},state.stories[action.storyId],{
+      characters : action.data
+    });
+
+    const updatedStories = {...state.stories};
+    updatedStories[action.storyId] = updatedStory;
+
+    return {
+      ...state,
+      loading: false,
+      stories: updatedStories
     };
   }
   else {

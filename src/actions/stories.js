@@ -21,11 +21,19 @@ export const storiesError = error => {
   };
 };
 
+export const CHARACTERS_SUCCESS = 'CHARACTERS_SUCCESS';
+export const charactersSuccess = (data, storyId) => {
+  return {
+    type: CHARACTERS_SUCCESS,
+    data,
+    storyId
+  };
+};
+
 // *********** STORY ASYNC ACTIONS *********** //
 
 //Get all Stories (general info)
 export const getStories = () => dispatch => {
-  
   dispatch(requestStories());
   const token = localStorage.getItem('token');
   return fetch(`${API_BASE_URL}/api/stories`, {
@@ -40,7 +48,6 @@ export const getStories = () => dispatch => {
       throw new Promise.reject(result.statusText);
     })
     .then(data => dispatch(storiesSuccess(data)))
-    // .catch(err => dispatch(storiesError(err)));
     .catch(err => console.log(err));
  
 };
@@ -60,7 +67,7 @@ export const updateStory = (updateObj, id) => dispatch => {
   })
     .then(()=> {
       console.log('dispatching get stories');
-      return dispatch(getStories())})
+      return dispatch(getStories());})
     .catch(() => console.log('an error!'));
 };
 
@@ -95,3 +102,23 @@ export const deleteStory = id => dispatch => {
     .catch((err) => dispatch(storiesError(err)));
 };
 
+
+// *********** CHARACTER ASYNC ACTIONS *********** //
+export const getCharacters = storyId => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/characters/${storyId}`, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(result => {
+      if (result.ok){
+        return result.json();
+      }
+      throw new Promise.reject(result.statusText);
+    })
+    .then(data => dispatch(charactersSuccess(data, storyId)))
+    .catch(err => console.log(err));
+
+};
