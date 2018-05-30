@@ -44,3 +44,17 @@ export const getStories = () => dispatch => {
  
 };
 
+//Delete a Story
+export const deleteStory = id => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/stories/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(() => dispatch(getStories()))
+    .catch((err) => dispatch(storiesError(err)));
+};
+

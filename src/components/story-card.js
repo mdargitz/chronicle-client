@@ -6,6 +6,8 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {deleteStory} from '../actions/stories';
 
 export class StoryCard extends React.Component {
 
@@ -13,14 +15,16 @@ export class StoryCard extends React.Component {
 
     const title = this.props.story.title;
     const img = this.props.story.picture;
-    console.log(img);
+    const redirectLink =`/stories/${this.props.id}`;
 
     return(
       <div>
         <img src={img} alt={`${title} banner image`} />
         <h3>{title}</h3>
-        <button>Edit</button>
-        <button>Delete</button>
+        <Link to={redirectLink}>
+          <button>Edit</button>
+        </Link>
+        <button onClick={() => this.props.dispatch(deleteStory(this.props.id))}>Delete</button>
       </div>
     );
   }
