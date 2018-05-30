@@ -1,6 +1,3 @@
-//Reusable componenet for all listings of items
-//needs prop to explain which list to render
-
 import React from 'react';
 import {connect} from 'react-redux';
 import StoryCard from './story-card';
@@ -9,9 +6,7 @@ import StoryCard from './story-card';
 export class StoryList extends React.Component {
 
   render () {
-    console.log(this.props);
     const list = Object.keys(this.props.cards).map((card, index) => {
-      console.log(card);
       return (
         <li key={index}>
           <StoryCard id={card} />
@@ -27,7 +22,7 @@ export class StoryList extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     cards : state.content.stories
   };

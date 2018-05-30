@@ -1,5 +1,4 @@
 import {API_BASE_URL} from '../config';
-import jwtDecode from 'jwt-decode';
 
 export const REQUEST_STORIES = 'REQUEST_STORIES';
 export const requestStories = () => {

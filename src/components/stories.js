@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { getStories } from '../actions/stories';
 import StoryList from './story-list';
 import AddNewStory from './add-new-story';
-import {Redirect} from 'react-router-dom';
 import mustLogin from './must-login';
 
 export class Stories extends React.Component {

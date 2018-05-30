@@ -5,9 +5,8 @@ import {createStory} from '../actions/stories';
 
 export function AddNewStory(props) {
 
-  //Default Untitled
   let untitledCount = 0;
-  (Object.entries(props.stories)).map(story => {
+  (Object.entries(props.stories)).forEach(story => {
     if (story[1].title.includes('Untitled')){
       untitledCount ++;
     }

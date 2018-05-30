@@ -1,9 +1,6 @@
 //Reusable card for any item
 //needs item name & item picture (if exists)
 //has button to delete item & button to edit item
-//delete button will open model to confirm
-//edit button will open model with item form
-
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -19,7 +16,7 @@ export class StoryCard extends React.Component {
 
     return(
       <div>
-        <img src={img} alt={`${title} banner image`} />
+        <img src={img} alt={`${title} banner`} />
         <h3>{title}</h3>
         <Link to={redirectLink}>
           <button>Edit</button>

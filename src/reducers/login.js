@@ -34,7 +34,6 @@ const loginReducuer = (state = initialState, action ) => {
     };
   } 
   if (action.type === LOGIN_SUCCESS){
-    //run thunk to dispach(pushtoStories), push to stories location react-router
     return {
       ...state,
       loading: false,

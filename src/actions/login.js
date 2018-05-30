@@ -37,7 +37,6 @@ export const loginError = error => {
 
 //Helper function to store token into state and local storage
 const storeToken = (token, dispatch) => {
-  console.log(token);
   const decodeToken = jwtDecode(token);
   dispatch(setStateToken(token));
   dispatch(loginSuccess(decodeToken.user));

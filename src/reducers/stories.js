@@ -34,7 +34,6 @@ const storyReducer = (state=initialState, action) =>{
     };
   }
   else {
-    // console.log('back to the initial state?' + action.type);
     return {...state};
   }
 };
