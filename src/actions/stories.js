@@ -21,6 +21,8 @@ export const storiesError = error => {
   };
 };
 
+// *********** STORY ASYNC ACTIONS *********** //
+
 //Get all Stories (general info)
 export const getStories = () => dispatch => {
   
@@ -43,9 +45,29 @@ export const getStories = () => dispatch => {
  
 };
 
+//Edit a Story (general details)
+export const updateStory = (updateObj, id) => dispatch => {
+  dispatch(requestStories());
+  console.log('update story running');
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/stories/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify(updateObj) 
+  })
+    .then(()=> {
+      console.log('dispatching get stories');
+      return dispatch(getStories())})
+    .catch(() => console.log('an error!'));
+};
+
 //Create a Story
 export const createStory = title => dispatch => {
   dispatch(requestStories());
+  console.log(title);
   const token = localStorage.getItem('token');
   return fetch(`${API_BASE_URL}/api/stories`, {
     method: 'POST',

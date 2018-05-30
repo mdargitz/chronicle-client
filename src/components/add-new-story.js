@@ -5,6 +5,7 @@ import {createStory} from '../actions/stories';
 
 export function AddNewStory(props) {
 
+  //TO-DO fix bug that doesnt allow new item if there is one untitled out of order
   let untitledCount = 0;
   (Object.entries(props.stories)).forEach(story => {
     if (story[1].title.includes('Untitled')){
