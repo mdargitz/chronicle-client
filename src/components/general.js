@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { updateStory, getStories } from '../actions/stories';
+import { getStories } from '../actions/stories';
 import Banner from './banner';
 import DetailsForm from './details-form';
 
@@ -41,7 +41,7 @@ export class General extends React.Component {
         </div>
       );
     }
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
     
   }
   
