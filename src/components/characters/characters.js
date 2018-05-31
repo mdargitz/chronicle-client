@@ -17,8 +17,7 @@ export class Characters extends React.Component {
     if (this.props.storyData){
       return (
         <div>
-          <h1>Characters </h1>
-          <Banner />
+          <Banner type='characters'/>
           <AddNewDetail type='character' storyId={this.props.match.params.storyId}/>
           <DetailList type='characters' storyId={this.props.match.params.storyId}/>
         </div>

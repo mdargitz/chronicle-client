@@ -17,8 +17,7 @@ export class Plots extends React.Component {
     if (this.props.storyData){
       return (
         <div>
-          <h1>Plots</h1>
-          <Banner />
+          <Banner type='plots'/>
           <AddNewDetail type='plot' storyId={this.props.match.params.storyId} />
           <DetailList type='plots' storyId={this.props.match.params.storyId}/>
         </div>

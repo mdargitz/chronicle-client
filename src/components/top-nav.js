@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {logout} from '../actions/login';
 import {withRouter} from 'react-router-dom';
+import AboutModal from './about-modal';
+import {openAbout } from '../actions/modal';
 
 export class TopNav extends React.Component{
 
@@ -11,9 +13,12 @@ export class TopNav extends React.Component{
   }
 
   render(){
+    console.log(this.props.isOpen);
     return (
       <nav>
-        <button>About</button>
+        
+        <AboutModal isOpen={this.props.isOpen}/>
+        <button onClick={() => this.props.dispatch(openAbout())}>About</button>
         <button onClick={()=>this.handleClick()}>Logout</button>
       </nav>
     );
@@ -21,4 +26,10 @@ export class TopNav extends React.Component{
   
 }
 
-export default connect()((withRouter)(TopNav));
+const mapStateToProps = state => {
+  return {
+    isOpen : state.modal.aboutOpen
+  };
+}
+
+export default connect(mapStateToProps)((withRouter)(TopNav));

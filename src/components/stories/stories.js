@@ -4,6 +4,7 @@ import { getStories } from '../../actions/stories';
 import StoryList from './story-list';
 import AddNewStory from './add-new-story';
 import mustLogin from '../must-login';
+import Banner from '../banner';
 
 export class Stories extends React.Component {
   componentWillMount(){
@@ -23,7 +24,7 @@ export class Stories extends React.Component {
     if (Object.keys(this.props.stories).length > 0 ){
       return (
         <div>
-          <h1>HOME!</h1>
+          <Banner type='stories'/>
           <AddNewStory />
           <StoryList />
         </div>    

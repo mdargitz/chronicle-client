@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 export default () => Component => {
   function mustLogin(props){
+    console.log(props);
     if(props.loading){
       return <div> Logging in...</div>;
     }
@@ -11,10 +12,10 @@ export default () => Component => {
       return <Redirect to='/' />;
     }
 
-    return <Component {...props.passThroughProps} />;
+    return <Component {...props} />;
   }
 
-  const mapStateToProps = (state, props) => ({
+  const mapStateToProps = (state) => ({
     loading : state.loginReducer.loading,
     loggedIn : state.loginReducer.currentUser !== null,
     error : state.loginReducer.error

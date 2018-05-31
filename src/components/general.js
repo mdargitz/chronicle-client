@@ -14,8 +14,10 @@ export class General extends React.Component {
     if (this.props.story) {
       return (
         <div>
-          <h1>GENERAL!</h1>  
-          <Banner />
+          <Banner 
+            storyImg={this.props.story.picture} 
+            storyTitle={this.props.story.title} 
+            storyDescription={this.props.story.description} />
           <DetailsForm id={this.props.match.params.storyId} 
             fields={[{name : 'title',
               label : 'Title',
