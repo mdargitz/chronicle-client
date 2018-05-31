@@ -27,16 +27,17 @@ ReactDOM.render(
               <Login />
             )
           )}/>
+          
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Registration} />
           <Route path='/stories' component={TopNav} />
           <Route exact path='/stories' component={Stories} />
           <Route path='/stories/:storyId' component={SideNav} />
-          {/* check in general component that the /characters/settings etc... exists */}
           <Route exact path='/stories/:storyId' component={General} />
           <Route exact path='/stories/:storyId/characters' component={Characters} />
           <Route exact path='/stories/:storyId/settings' component={Settings} />
           <Route exact path='/stories/:storyId/plots' component={Plots} />
+
         </div>
       </Router>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './banner.css';
 
 export default function Banner(props){
   //if storyImg passed, will use that as background, otherwise use type to determine background
@@ -26,9 +27,10 @@ export default function Banner(props){
 
 
   return (
-    <div>
-      <img src={bgimg} alt={props.type + 'banner'} />
-      <h1>{header}</h1>
-      <h2>{description}</h2>
+    <div className="banner" style={{backgroundImage : `url(${bgimg})`}}>
+      <div className="content-container"> 
+        <h1>{header}</h1>
+        <h2>{description}</h2>
+      </div>
     </div>);
 }

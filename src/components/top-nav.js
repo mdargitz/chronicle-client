@@ -13,7 +13,6 @@ export class TopNav extends React.Component{
   }
 
   render(){
-    console.log(this.props.isOpen);
     return (
       <nav>
         

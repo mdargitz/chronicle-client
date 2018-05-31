@@ -4,7 +4,6 @@ import {closeAbout} from '../actions/modal';
 import {connect} from 'react-redux';
 
 export function AboutModal(props){
-  console.log(props.isOpen)
   return (
     <ReactModal 
       isOpen={props.isOpen}
