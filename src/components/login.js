@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './login-form';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 export default class Login extends React.Component {
   
@@ -12,6 +12,7 @@ export default class Login extends React.Component {
       <div>
         <h1>Log In</h1>
         <LoginForm />
+        <Link to='/register'>Or create your free account!</Link>
       </div>
     );
   }

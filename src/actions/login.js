@@ -61,3 +61,7 @@ export const login = (username, password) => dispatch => {
     .then(({authToken}) => storeToken(authToken, dispatch))
     .catch(e => console.log(e));
 };
+
+export const logout = () => () => {
+  localStorage.clear();
+};

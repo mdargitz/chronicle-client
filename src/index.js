@@ -13,13 +13,13 @@ import General from './components/general';
 import Characters from './components/characters';
 import Settings from './components/settings';
 import Plots from './components/plots';
+import TopNav from './components/top-nav';
 
 ReactDOM.render(
   <Provider store={store}>
     <div>
       <Router>
         <div>
-          <div>some nav bar</div>
           <Route exact path="/" render={() => (
             localStorage.getItem('token') ? (
               <Redirect to="/stories"/>
@@ -29,6 +29,7 @@ ReactDOM.render(
           )}/>
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Registration} />
+          <Route path='/stories' component={TopNav} />
           <Route exact path='/stories' component={Stories} />
           <Route path='/stories/:storyId' component={SideNav} />
           {/* check in general component that the /characters/settings etc... exists */}
