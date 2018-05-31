@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { getStories } from '../actions/stories';
 import Banner from './banner';
 import DetailsForm from './details-form';
+import mustLogin from './must-login';
 
 export class General extends React.Component {
   componentWillMount(){

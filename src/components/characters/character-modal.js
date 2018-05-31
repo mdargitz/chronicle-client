@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { getStories } from '../actions/stories';
-import Banner from './banner';
-import DetailsForm from './details-form';
+import { getStories } from '../../actions/stories';
+import DetailsForm from '../details-form';
 //gets storyID & characterId from card component that is used to bring it up
 export class CharacterModal extends React.Component {
   componentWillMount(){

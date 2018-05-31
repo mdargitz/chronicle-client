@@ -30,6 +30,23 @@ export const charactersSuccess = (data, storyId) => {
   };
 };
 
+export const SETTINGS_SUCCESS = 'SETTINGS_SUCCESS';
+export const settingsSuccess = (data, storyId) => {
+  return {
+    type: SETTINGS_SUCCESS,
+    data,
+    storyId
+  };
+};
+export const PLOTS_SUCCESS = 'PLOTS_SUCCESS';
+export const plotsSuccess = (data, storyId) => {
+  return {
+    type: PLOTS_SUCCESS,
+    data,
+    storyId
+  };
+};
+
 // *********** STORY ASYNC ACTIONS *********** //
 
 //Get all Stories (general info)
@@ -107,6 +124,7 @@ export const deleteStory = id => dispatch => {
 export const getCharacters = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
+  
   return fetch(`${API_BASE_URL}/api/characters/${storyId}`, {
     headers: {
       'Authorization' : `Bearer ${token}`
@@ -122,3 +140,44 @@ export const getCharacters = storyId => dispatch => {
     .catch(err => console.log(err));
 
 };
+
+// *********** Setting ASYNC ACTIONS *********** //
+export const getSettings = storyId => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/settings/${storyId}`, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(result => {
+      if (result.ok){
+        return result.json();
+      }
+      throw new Promise.reject(result.statusText);
+    })
+    .then(data => dispatch(settingsSuccess(data, storyId)))
+    .catch(err => console.log(err));
+
+};
+
+// *********** Plot ASYNC ACTIONS *********** //
+export const getPlots = storyId => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/plots/${storyId}`, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(result => {
+      if (result.ok){
+        return result.json();
+      }
+      throw new Error(result);
+    })
+    .then(data => dispatch(plotsSuccess(data, storyId)))
+    .catch(err => console.log('something went wrong'));
+
+};
+

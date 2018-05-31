@@ -9,7 +9,10 @@ export class DetailCard extends React.Component {
   render(){
     return (
       <div>
-        DetailCardHere
+        <img src={this.props.img} alt={this.props.name} />
+        <h3>{this.props.name}</h3>
+        <button>Edit</button>
+        <button>Delete</button>
       </div>
     );
   }

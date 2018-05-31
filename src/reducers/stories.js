@@ -1,4 +1,4 @@
-import { REQUEST_STORIES, STORIES_SUCCESS, STORIES_ERROR, CHARACTERS_SUCCESS } from '../actions/stories';
+import { REQUEST_STORIES, STORIES_SUCCESS, STORIES_ERROR, CHARACTERS_SUCCESS, SETTINGS_SUCCESS, PLOTS_SUCCESS } from '../actions/stories';
 
 const initialState = {
   loading: false,
@@ -49,6 +49,40 @@ const storyReducer = (state=initialState, action) =>{
       stories: updatedStories
     };
   }
+
+  if(action.type === SETTINGS_SUCCESS){
+    //TO DO - clean this up if possible? - change to spread operator
+    const updatedStory = Object.assign({},state.stories[action.storyId],{
+      settings : action.data
+    });
+    
+    const updatedStories = {...state.stories};
+    updatedStories[action.storyId] = updatedStory;
+    
+    return {
+      ...state,
+      loading: false,
+      stories: updatedStories
+    };
+  }
+
+  if(action.type === PLOTS_SUCCESS){
+    //TO DO - clean this up if possible?
+    const updatedStory = Object.assign({},state.stories[action.storyId],{
+      plots : action.data
+    });
+    
+    const updatedStories = {...state.stories};
+    updatedStories[action.storyId] = updatedStory;
+    
+    return {
+      ...state,
+      loading: false,
+      stories: updatedStories
+    };
+  }
+
+
   else {
     return {...state};
   }

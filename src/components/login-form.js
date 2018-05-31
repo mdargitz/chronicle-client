@@ -10,7 +10,7 @@ export class LoginForm extends React.Component {
   onSubmit(values){
     const {username, password} = values;
     this.props.dispatch(login(username, password))
-      .then(this.props.history.push('/stories'));
+      .then(() => this.props.history.push('/stories'));
   }
 
   render(){

@@ -4,7 +4,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {deleteStory} from '../actions/stories';
+import {deleteStory} from '../../actions/stories';
 
 export class StoryCard extends React.Component {
 

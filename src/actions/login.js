@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import {API_BASE_URL} from '../config';
 
+
 export const SET_STATE_TOKEN = 'SET_STATE_TOKEN';
 export const setStateToken = token => {
   return {

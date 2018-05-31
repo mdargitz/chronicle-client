@@ -4,6 +4,7 @@ import Input from './input';
 import {required, notEmpty, noSpaces, minLength, maxLength, confirmPassword} from '../validators';
 import { registerUser } from '../actions/registration';
 import { login } from '../actions/login';
+import {withRouter} from 'react-router-dom';
 
 export class RegistrationForm extends React.Component {
 
@@ -11,7 +12,8 @@ export class RegistrationForm extends React.Component {
     const {username, password} = values;
     const user = {username, password};
     return this.props.dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)));
+      .then(() => this.props.dispatch(login(username, password)))
+      .then(() => this.props.history.push('/stories'));
   }
 
   render(){
@@ -51,4 +53,4 @@ export class RegistrationForm extends React.Component {
 
 export default reduxForm({
   form : 'RegistrationForm'
-})(RegistrationForm);
+})((withRouter)(RegistrationForm));

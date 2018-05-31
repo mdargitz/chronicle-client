@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { getStories } from '../actions/stories';
+import { getStories } from '../../actions/stories';
 import StoryList from './story-list';
 import AddNewStory from './add-new-story';
-import mustLogin from './must-login';
+import mustLogin from '../must-login';
 
 export class Stories extends React.Component {
   componentWillMount(){
