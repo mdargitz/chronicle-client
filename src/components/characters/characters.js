@@ -3,6 +3,7 @@ import{connect} from 'react-redux';
 import {getStories, getCharacters} from '../../actions/stories';
 import Banner from '../banner';
 import DetailList from '../detail-list';
+import AddNewDetail from '../new-detail';
 
 export class Characters extends React.Component {
   
@@ -17,6 +18,7 @@ export class Characters extends React.Component {
         <div>
           <h1>Characters </h1>
           <Banner />
+          <AddNewDetail type='character' storyId={this.props.match.params.storyId}/>
           <DetailList type='characters' storyId={this.props.match.params.storyId}/>
         </div>
       );

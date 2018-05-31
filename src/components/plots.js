@@ -3,6 +3,7 @@ import{connect} from 'react-redux';
 import {getStories, getPlots} from '../actions/stories';
 import Banner from './banner';
 import DetailList from './detail-list';
+import AddNewDetail from './new-detail';
 
 export class Plots extends React.Component {
   
@@ -17,6 +18,7 @@ export class Plots extends React.Component {
         <div>
           <h1>Plots</h1>
           <Banner />
+          <AddNewDetail type='plot' storyId={this.props.match.params.storyId} />
           <DetailList type='plots' storyId={this.props.match.params.storyId}/>
         </div>
       );

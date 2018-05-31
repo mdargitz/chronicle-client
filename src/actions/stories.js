@@ -91,7 +91,6 @@ export const updateStory = (updateObj, id) => dispatch => {
 //Create a Story
 export const createStory = title => dispatch => {
   dispatch(requestStories());
-  console.log(title);
   const token = localStorage.getItem('token');
   return fetch(`${API_BASE_URL}/api/stories`, {
     method: 'POST',
@@ -121,6 +120,7 @@ export const deleteStory = id => dispatch => {
 
 
 // *********** CHARACTER ASYNC ACTIONS *********** //
+//get all
 export const getCharacters = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -134,11 +134,41 @@ export const getCharacters = storyId => dispatch => {
       if (result.ok){
         return result.json();
       }
-      throw new Promise.reject(result.statusText);
+      throw new Error(result.statusText);
     })
     .then(data => dispatch(charactersSuccess(data, storyId)))
     .catch(err => console.log(err));
 
+};
+
+//add new
+export const createCharacter = (name, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/characters/${storyId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({name}) 
+  })
+    .then(()=> dispatch(getCharacters(storyId)))
+    .catch(() => console.log('an error!'));
+};
+
+//delete
+export const deleteCharacter = (id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/characters/${storyId}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(() => dispatch(getCharacters(storyId)))
+    .catch((err) => console.log(err));
 };
 
 // *********** Setting ASYNC ACTIONS *********** //
@@ -161,7 +191,38 @@ export const getSettings = storyId => dispatch => {
 
 };
 
+//add new
+export const createSetting = (name, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/settings/${storyId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({name}) 
+  })
+    .then(()=> dispatch(getSettings(storyId)))
+    .catch(() => console.log('an error!'));
+};
+
+//delete
+export const deleteSetting = (id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/settings/${storyId}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(() => dispatch(getSettings(storyId)))
+    .catch((err) => console.log(err));
+};
+
 // *********** Plot ASYNC ACTIONS *********** //
+//get all
 export const getPlots = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -181,3 +242,32 @@ export const getPlots = storyId => dispatch => {
 
 };
 
+//add new
+export const createPlot = (name, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/plots/${storyId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({name}) 
+  })
+    .then(()=> dispatch(getPlots(storyId)))
+    .catch(() => console.log('an error!'));
+};
+
+//delete
+export const deletePlot = (id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/plots/${storyId}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+    .then(() => dispatch(getPlots(storyId)))
+    .catch((err) => console.log(err));
+};

@@ -1,17 +1,12 @@
-//add new button for stories, characters, plots or settings
+
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStory} from '../../actions/stories';
-import {withRouter} from 'react-router-dom';
 
 export function AddNewStory(props) {
 
-  //TO-DO fix bug that doesnt allow new item if there is one untitled out of order
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const data = new FormData('addStory');
-    // const title = data.get('title');
-    // console.log(title);
     const title = document.forms['addStory'].elements['title'].value;
     props.dispatch(createStory(title));
   };
@@ -35,4 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)((withRouter)(AddNewStory));
+export default connect(mapStateToProps)(AddNewStory);

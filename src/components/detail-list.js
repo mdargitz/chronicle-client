@@ -6,21 +6,24 @@ import DetailCard from './detail-card';
 
 export class DetailList extends React.Component {
   render(){
-    let characters = [];
-    
-    if(this.props.characters){
-      characters= this.props.characters.map((character,index) => {
+    let items = [];  
+    if(this.props.items){
+      items= this.props.items.map((item,index) => {
         return (
           <li key={index}>
-            <DetailCard img={character.picture} name={character.name} id={character.id} />
+            <DetailCard 
+              img={item.picture} 
+              name={item.name} 
+              id={item.id} 
+              type={this.props.type} 
+              storyId={this.props.storyId}/>
           </li>);
       });
 
       return(
         <div>
           <ul>
-            <li>add new detail will go here</li>
-            {characters}
+            {items}
           </ul>
         </div>
       );
@@ -31,7 +34,7 @@ export class DetailList extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    characters : state.content.stories[props.storyId][props.type]
+    items : state.content.stories[props.storyId][props.type]
   };
 };
 
