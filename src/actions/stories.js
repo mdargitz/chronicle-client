@@ -72,7 +72,6 @@ export const getStories = () => dispatch => {
 //Edit a Story (general details)
 export const updateStory = (updateObj, id) => dispatch => {
   dispatch(requestStories());
-  console.log('update story running');
   const token = localStorage.getItem('token');
   return fetch(`${API_BASE_URL}/api/stories/${id}`, {
     method: 'PUT',
@@ -141,6 +140,23 @@ export const getCharacters = storyId => dispatch => {
 
 };
 
+//edit existing
+export const updateCharacter = (updateObj, id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/characters/${storyId}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify(updateObj) 
+  })
+    .then(()=> {
+      return dispatch(getCharacters(storyId));})
+    .catch(() => console.log('an error!'));
+};
+
 //add new
 export const createCharacter = (name, storyId) => dispatch => {
   dispatch(requestStories());
@@ -189,6 +205,23 @@ export const getSettings = storyId => dispatch => {
     .then(data => dispatch(settingsSuccess(data, storyId)))
     .catch(err => console.log(err));
 
+};
+
+//edit existing
+export const updateSetting = (updateObj, id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/settings/${storyId}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify(updateObj) 
+  })
+    .then(()=> {
+      return dispatch(getSettings(storyId));})
+    .catch(() => console.log('an error!'));
 };
 
 //add new
@@ -240,6 +273,23 @@ export const getPlots = storyId => dispatch => {
     .then(data => dispatch(plotsSuccess(data, storyId)))
     .catch(err => console.log('something went wrong'));
 
+};
+
+//edit existing
+export const updatePlot= (updateObj, id, storyId) => dispatch => {
+  dispatch(requestStories());
+  const token = localStorage.getItem('token');
+  return fetch(`${API_BASE_URL}/api/plots/${storyId}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization' : `Bearer ${token}`,
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify(updateObj) 
+  })
+    .then(()=> {
+      return dispatch(getPlots(storyId));})
+    .catch(() => console.log('an error!'));
 };
 
 //add new

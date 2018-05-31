@@ -1,7 +1,8 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import Input from './input';
-import { updateStory } from '../actions/stories';
+import { updateStory, updateCharacter, updateSetting, updatePlot } from '../actions/stories';
+import { closeModal } from '../actions/modal';
 
 export class DetailsForm extends React.Component{
 //get needed fields from parent
@@ -12,6 +13,16 @@ export class DetailsForm extends React.Component{
     if (this.props.form === 'general'){
       this.props.dispatch(updateStory(values, this.props.id));
     }
+    if(this.props.form === 'editcharacters'){
+      this.props.dispatch(updateCharacter(values, this.props.id, this.props.storyId));
+    }
+    if(this.props.form === 'editsettings'){
+      this.props.dispatch(updateSetting(values, this.props.id, this.props.storyId));
+    }
+    if(this.props.form === 'editplots'){
+      this.props.dispatch(updatePlot(values, this.props.id, this.props.storyId));
+    }
+    this.props.dispatch(closeModal());
   }
 
 
