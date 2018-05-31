@@ -4,6 +4,7 @@ import {getStories, getSettings} from '../actions/stories';
 import Banner from './banner';
 import DetailList from './detail-list';
 import AddNewDetail from './new-detail';
+import mustLogin from './must-login';
 
 export class Settings extends React.Component {
   
@@ -33,4 +34,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Settings);
+export default mustLogin()(connect(mapStateToProps)(Settings));

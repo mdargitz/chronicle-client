@@ -52,4 +52,4 @@ const mapStateToProps = (state, props) => {
   return {story : state.content.stories[props.match.params.storyId]};
 };
 
-export default connect(mapStateToProps)(General);
+export default mustLogin()(connect(mapStateToProps)(General));
