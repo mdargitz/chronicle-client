@@ -16,14 +16,15 @@ export function AddNewDetail(props) {
   };
 
   return (
-    <div className="new-detail-container">
-      <p>+</p>
-      <form id={'new ' + props.type + ' form'} onSubmit={(e) => handleSubmit(e) }>
-        <label htmlFor="title" >New {props.type}</label>
-        <input required name={props.type + ' name'} type="input" id={props.type + ' name'} placeholder={`new ${props.type} name`}/>
-        <button type="submit">Create!</button>
-      </form>
-      
+    <div className="new-detail">
+      <div className="new-detail-container">
+        <i className="fas fa-plus-circle"></i>
+        <form id={'new ' + props.type + ' form'} onSubmit={(e) => handleSubmit(e) }>
+          <label htmlFor="title" >New {props.type}</label>
+          <input required name={props.type + ' name'} type="input" id={props.type + ' name'} placeholder={`Type a new ${props.type} name here...`}/>
+          <button type="submit">Create!</button>
+        </form>
+      </div>
     </div>
   );
 

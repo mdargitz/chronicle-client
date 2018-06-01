@@ -1,13 +1,22 @@
-.new-detail-container{
-max-width: 200px;
+.new-detail{
+display:flex;
+justify-content: center;
+padding: 20px;
 background: #23404d;
-box-shadow: #23404d 0px 0px 5px;
+box-shadow: black 0px 0px 2px;
 }
 
-.new-detail-container p {
+.new-detail-container{
+max-width: 400px;
+display: flex;
+flex-direction: column;
+}
+
+.new-detail-container i {
 text-align: center;
 font-size: 100px;
 color: #ffa587;
+padding-bottom: 15px;
 }
 
 .new-detail-container label {
@@ -15,10 +24,14 @@ display: none;
 } 
 
 .new-detail-container input {
-  width: 194px;
+  width: 100%;
   margin: 0;
   text-align: center;
   font-size: 16px;
+  padding: 10px 0;
+  border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   } 
 
   .new-detail-container button {
