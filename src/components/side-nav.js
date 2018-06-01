@@ -1,12 +1,15 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './side-nav.css';
+import { navigateTo } from '../actions/navigation';
+import {connect} from 'react-redux';
 
 export function SideNav(props) {
   const {storyId} = props.match.params;
   const options = ['Characters', 'Settings', 'Plots', 'General'];
-  const displayedLink = options.find(option => props.location.pathname.includes(option.toLowerCase()));
-  const optionLinks = options.filter(option => !props.location.pathname.includes(option.toLowerCase()));
+  const displayedLink = props.display;
+  const optionLinks = options.filter(option => option !== props.display);
+  
 
   const optionElems = optionLinks.map((link, index) => {
     return (<option key={index} value={link}>
@@ -15,8 +18,20 @@ export function SideNav(props) {
 
   const handleChange = selected => {
     selected = selected.toLowerCase();
-    if (selected === 'general') props.history.push(`/stories/${storyId}`);
-    else props.history.push(`/stories/${storyId}/${selected}`);
+
+
+    if(selected === 'back'){
+      props.history.push('/stories/');
+    }
+    else if (selected === 'general') {
+      props.dispatch(navigateTo('General'));
+      props.history.push(`/stories/${storyId}`);
+    }
+      
+    else {
+      props.dispatch(navigateTo(selected));
+      props.history.push(`/stories/${storyId}/${selected}`);
+    }
   };
  
   return (
@@ -24,9 +39,14 @@ export function SideNav(props) {
       <select id='link' onChange={(e) => handleChange(e.target[e.target.selectedIndex].value)}> 
         <option hidden>{displayedLink}</option>
         {optionElems}
+        <option value='back'>Back to All Stories</option>
       </select>
     </form>
   );
 }
 
-export default withRouter(SideNav);
+const mapStateToProps = (state) => {
+  return {display : state.navigation.path};
+};
+
+export default connect(mapStateToProps)(withRouter(SideNav));
