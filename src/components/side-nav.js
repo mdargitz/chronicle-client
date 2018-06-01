@@ -35,7 +35,7 @@ export function SideNav(props) {
   };
  
   return (
-    <form>
+    <form className='side-nav'>
       <select id='link' onChange={(e) => handleChange(e.target[e.target.selectedIndex].value)}> 
         <option hidden>{displayedLink}</option>
         {optionElems}

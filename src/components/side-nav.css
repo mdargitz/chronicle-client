@@ -1,6 +1,16 @@
 .side-nav {
-  background: #23404d;
-  overflow: hidden;
-  display: flex;
-
+  border: none;
+  position: absolute;
+  left: 0px;
+  text-align: center;
+  width: 50%;
 }
+
+.side-nav select {
+  width: 100%;
+border: 2px solid white;
+font-size: 16px;
+color: white;
+background: #23404d;
+}
+

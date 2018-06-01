@@ -1,0 +1,22 @@
+nav {
+  position: absolute;
+  right: 0px;
+  width: 50%;
+  background: #23404d;
+
+}
+nav button {
+  float: right;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+  color: white;
+  margin: 2px 5px;
+  transition: background-color .5s, color .5s;
+}
+
+nav button:hover {
+  background: #87fffb;
+  color: #23404d;
+  cursor: pointer;
+}

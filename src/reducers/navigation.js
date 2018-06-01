@@ -1,7 +1,7 @@
 import {NAVIGATE_TO} from '../actions/navigation';
 
 const initialState = {
-  path : 'General'
+  path : null
 };
 
 export default function navigationReducer(state = initialState, action){
