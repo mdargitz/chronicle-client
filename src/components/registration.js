@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import RegistrationForm from './registration-form';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 export class Registration extends React.Component{
   render(){
@@ -13,6 +13,7 @@ export class Registration extends React.Component{
         <h1>Create An Account</h1>
         <main>
           <RegistrationForm />
+          Already have an account? <Link to='/login'>Log in here</Link>
         </main>
       </div>
     );

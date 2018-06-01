@@ -88,7 +88,7 @@ export const updateStory = (updateObj, id) => dispatch => {
     .then(()=> {
       console.log('dispatching get stories');
       return dispatch(getStories());})
-    .catch(() => console.log('an error!'));
+    .catch(() => console.log('an error!')); //on error/not found push to notfound component
 };
 
 //Create a Story
@@ -270,6 +270,7 @@ export const getPlots = storyId => dispatch => {
   })
     .then(result => {
       if (result.ok){
+        console.log('result okay');
         return result.json();
       }
       throw new Error(result);
@@ -300,6 +301,7 @@ export const updatePlot= (updateObj, id, storyId) => dispatch => {
 export const createPlot = (name, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
+  console.log('plot being created!');
   return fetch(`${API_BASE_URL}/api/plots/${storyId}`, {
     method: 'POST',
     headers: {

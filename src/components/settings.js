@@ -18,7 +18,7 @@ export class Settings extends React.Component {
       return (
         <div>
           <Banner type='settings'/>
-          <AddNewDetail type='setting' storyId={this.props.match.params.storyId} />
+          <AddNewDetail type='setting' storyId={this.props.match.params.storyId}/>
           <DetailList type='settings' storyId={this.props.match.params.storyId}/>
         </div>
       );

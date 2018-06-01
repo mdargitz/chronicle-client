@@ -3,6 +3,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import DetailCard from './detail-card';
+import './detail-list.css';
 
 export class DetailList extends React.Component {
   render(){
@@ -21,7 +22,7 @@ export class DetailList extends React.Component {
       });
 
       return(
-        <div>
+        <div className='detail-list'>
           <ul>
             {items}
           </ul>

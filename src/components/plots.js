@@ -18,7 +18,7 @@ export class Plots extends React.Component {
       return (
         <div>
           <Banner type='plots'/>
-          <AddNewDetail type='plot' storyId={this.props.match.params.storyId} />
+          <AddNewDetail type='plot' storyId={this.props.match.params.storyId}/>
           <DetailList type='plots' storyId={this.props.match.params.storyId}/>
         </div>
       );

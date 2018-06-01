@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import Login from './components/login';
 import Registration from './components/registration';
 import Stories from './components/stories';
@@ -27,16 +27,17 @@ ReactDOM.render(
               <Login />
             )
           )}/>
-          
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Registration} />
           <Route path='/stories' component={TopNav} />
-          <Route exact path='/stories' component={Stories} />
           <Route path='/stories/:storyId' component={SideNav} />
-          <Route exact path='/stories/:storyId' component={General} />
-          <Route exact path='/stories/:storyId/characters' component={Characters} />
-          <Route exact path='/stories/:storyId/settings' component={Settings} />
-          <Route exact path='/stories/:storyId/plots' component={Plots} />
+          <Switch>
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Registration} />
+            <Route exact path='/stories' component={Stories} />
+            <Route exact path='/stories/:storyId' component={General} />
+            <Route exact path='/stories/:storyId/characters' component={Characters} />
+            <Route exact path='/stories/:storyId/settings' component={Settings} />
+            <Route exact path='/stories/:storyId/plots' component={Plots} />
+          </Switch>
 
         </div>
       </Router>

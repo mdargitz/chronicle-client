@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { createCharacter, createSetting, createPlot } from '../actions/stories';
+import './new-detail.css';
 
 //get type & storyId from parent
 export function AddNewDetail(props) {
@@ -15,12 +16,12 @@ export function AddNewDetail(props) {
   };
 
   return (
-    <div>
+    <div className="new-detail-container">
       <p>+</p>
       <form id={'new ' + props.type + ' form'} onSubmit={(e) => handleSubmit(e) }>
         <label htmlFor="title" >New {props.type}</label>
-        <input required name={props.type + ' name'} type="input" id={props.type + ' name'}/>
-        <button type="submit">Add New</button>
+        <input required name={props.type + ' name'} type="input" id={props.type + ' name'} placeholder={`new ${props.type} name`}/>
+        <button type="submit">Create!</button>
       </form>
       
     </div>

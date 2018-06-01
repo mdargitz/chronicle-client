@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 
 export default () => Component => {
   function mustLogin(props){
-    console.log(props);
     if(props.loading){
       return <div> Logging in...</div>;
     }
