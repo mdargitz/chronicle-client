@@ -1,0 +1,21 @@
+.details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-form button {
+  color: #23404d;
+  background: #ffa587;
+  border-radius: 5px;
+  border: none;
+  box-shadow: #e46237 0px 5px 0px;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  transition: color .5s, background-color .5s;
+}
+
+.details-form button:hover {
+  color: white;
+  background: #e46237;
+}

@@ -4,6 +4,7 @@ import { getStories } from '../actions/stories';
 import Banner from './banner';
 import DetailsForm from './details-form';
 import mustLogin from './must-login';
+import './general.css';
 
 export class General extends React.Component {
   componentWillMount(){
@@ -18,6 +19,7 @@ export class General extends React.Component {
             storyImg={this.props.story.picture} 
             storyTitle={this.props.story.title} 
             storyDescription={this.props.story.description} />
+          <p className='directions'>Click an empty space to add a detail or an existing detail to change it!</p>
           <DetailsForm id={this.props.match.params.storyId} 
             fields={[{name : 'title',
               label : 'Title',

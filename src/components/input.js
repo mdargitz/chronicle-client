@@ -1,4 +1,5 @@
 import React from 'react';
+import './input.css';
 
 export default class Input extends React.Component{
   //After component is updated, check to see if active, and if so, move focus
@@ -23,7 +24,7 @@ export default class Input extends React.Component{
     }
 
     return(
-      <div>
+      <div className='field-container'>
         <label htmlFor={this.props.input.name}>
           {this.props.label}
           {/* //IF there is an error or warning shows it here */}

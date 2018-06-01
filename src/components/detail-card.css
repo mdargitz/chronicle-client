@@ -1,0 +1,32 @@
+.detail-card {
+  background: white;
+  box-shadow: #23404d 0px 0px 5px;
+  margin: 10px 0;  
+}
+
+.detail-card img {
+  border-bottom: 1px solid grey;
+  max-width: 100%;
+  object-fit: fill;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.card-icons button{
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #23404d;
+  transition: color .5s, background-color .5s;
+  cursor: pointer;
+}
+
+.card-icons button:hover {
+  color: #87fffb;
+  background: #23404d;
+}

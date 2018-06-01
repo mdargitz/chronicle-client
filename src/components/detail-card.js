@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { deleteCharacter, deleteSetting, deletePlot } from '../actions/stories';
 import { openModal} from '../actions/modal';
 import EditModal from './edit-modal';
-
+import './detail-card.css';
 
 export class DetailCard extends React.Component {
 //needs detail name, detail picture and detail id, detail story id, detail type
@@ -23,13 +23,17 @@ export class DetailCard extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='detail-card'>
         <EditModal type={this.props.type} id={this.props.id} storyId={this.props.storyId}/>
         
         <img src={this.props.img} alt={this.props.name} />
-        <h3>{this.props.name}</h3>
-        <button onClick={() => this.handleModal()}>Edit</button>
-        <button onClick={()=> this.handleDelete()}>Delete</button>
+        <div className='card-content'>
+          <h3>{this.props.name}</h3>
+          <div className='card-icons'> 
+            <button onClick={() => this.handleModal()}><i className="fas fa-pencil-alt"></i></button>
+            <button onClick={()=> this.handleDelete()}><i className="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -64,6 +64,7 @@ export function EditModal(props){
       shouldCloseOnOverlayClick={false}
       appElement={document.getElementById('root')}
     >
+      <h2>Updating &apos;{item.name}&apos;</h2> 
       <DetailsForm 
         form={'edit' + props.type}
         fields={formFields}

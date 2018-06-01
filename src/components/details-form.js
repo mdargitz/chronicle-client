@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import Input from './input';
 import { updateStory, updateCharacter, updateSetting, updatePlot } from '../actions/stories';
 import { closeModal } from '../actions/modal';
+import './details-form.css';
 
 export class DetailsForm extends React.Component{
 //get needed fields from parent
@@ -42,7 +43,9 @@ export class DetailsForm extends React.Component{
 
 
     return(
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <form 
+        className='details-form'
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         {fields}
         <button type="submit">Update!</button>
       </form>
