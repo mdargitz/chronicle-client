@@ -28,7 +28,6 @@ export class DetailsForm extends React.Component{
 
 
   render(){
-    console.log(this.props);
     const fields = this.props.fields.map((field, index) => {
       return <Field
         key={index}

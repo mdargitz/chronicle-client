@@ -5,6 +5,7 @@ import {required, notEmpty, noSpaces, minLength, maxLength, confirmPassword} fro
 import { registerUser } from '../actions/registration';
 import { login } from '../actions/login';
 import {withRouter} from 'react-router-dom';
+import './registration-form.css';
 
 export class RegistrationForm extends React.Component {
 
@@ -18,7 +19,7 @@ export class RegistrationForm extends React.Component {
 
   render(){
     return(
-      <form 
+      <form className='reg-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field 
           name="username"

@@ -4,6 +4,7 @@ import Input from './input';
 import {login} from '../actions/login';
 import { required, notEmpty } from '../validators';
 import {withRouter} from 'react-router-dom';
+import './login-form.css';
 
 export class LoginForm extends React.Component {
   
@@ -15,7 +16,7 @@ export class LoginForm extends React.Component {
 
   render(){
     return(
-      <form
+      <form className='login-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field 
           type="text" 

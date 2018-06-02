@@ -17,7 +17,6 @@ export class DetailCard extends React.Component {
   }
 
   handleModal(){
-    console.log('I been clicked');
     this.props.dispatch(openModal());
   }
 

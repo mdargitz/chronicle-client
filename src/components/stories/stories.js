@@ -33,7 +33,7 @@ export class Stories extends React.Component {
     //TO DO- render the list always, just dont have anything if object is empty
     return (
       <div>
-        <h1>HOME!</h1>
+        <Banner type='stories'/>
         <AddNewStory />
       </div> );
        

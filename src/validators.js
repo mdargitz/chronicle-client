@@ -4,7 +4,7 @@ export const notEmpty = value => value.trim() !== '' ? undefined : 'This field c
 
 export const noSpaces = value => value.trim().length === value.length ? undefined : 'May not lead or end with spaces';
 
-export const minLength = value => value.length >= 10 ? undefined : 'Must be at least 8 characters long';
+export const minLength = value => value.length >= 10 ? undefined : 'Must be at least 10 characters long';
 
 export const maxLength = value => value.length <= 72 ? undefined : 'May not be greater than 72 characters';
 

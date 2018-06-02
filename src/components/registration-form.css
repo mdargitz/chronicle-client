@@ -1,0 +1,24 @@
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.reg-form button {
+  border: none;
+  border-radius: 5px;
+  background: #ffa587;
+  box-shadow: #f16030 0px 5px 0px;
+  color: #23404d;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+  transition: background-color .5s;
+  cursor: pointer;
+}
+
+.reg-form button:hover {
+  background: #f16030;
+}
