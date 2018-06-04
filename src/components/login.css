@@ -30,11 +30,18 @@
   color: #23404d;
   font-size: 16px;
   background: none;
-  border: none;
-  border-bottom: 3px solid #87fffb;
+  border: 1px solid lightgrey;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: lightgray 0px 0px 2px;
+  transition: background-color .5s, color .5s;
 }
+
+.guest-btn:hover {
+  background-color: lightgrey;
+  color: black;
+}
+
 .login-title h1 {
   margin-bottom: 10px;
 }
@@ -45,8 +52,22 @@
   left: 10px;
   right: 10px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 80px;
   background: rgba(0,0,0,.8);
   color: white;
   border: 1px solid white;
+}
+
+.about-btn{
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background: white;
+  box-shadow: lightgrey 0px 0px 2px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color .5s;
+}
+
+.about-btn:hover{
+  background: #87fffb;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import StoryCard from './story-card';
+import '../detail-list.css';
 
 
 export class StoryList extends React.Component {
@@ -15,9 +16,11 @@ export class StoryList extends React.Component {
     });
 
     return (
-      <ul>
-        {list}
-      </ul>
+      <div className='detail-list'>
+        <ul>
+          {list}
+        </ul>
+      </div>
     );
   }
 }

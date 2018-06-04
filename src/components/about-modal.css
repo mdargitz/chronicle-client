@@ -1,0 +1,35 @@
+
+.about-content h1 {
+  margin: 20px 0;
+}
+
+.about-content p {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.about-content h1, .about-content h2 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.about-button {
+  border: none;
+  border-radius: 5px;
+  background: #ffa587;
+  box-shadow: #f16030 0px 5px 0px;
+  color: #23404d;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+  transition: background-color .5s;
+  cursor: pointer;
+  margin: 20px auto;
+  width: 50%;
+  display: block;
+}
+
+.about-button:hover {
+  background: #f16030;
+}

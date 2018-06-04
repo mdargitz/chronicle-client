@@ -4,6 +4,8 @@ import {Redirect, Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../actions/login';
 import './login.css';
+import {openAbout} from '../actions/modal';
+import AboutModal from './about-modal';
 
 export class Login extends React.Component {
 
@@ -21,6 +23,8 @@ export class Login extends React.Component {
         <div className='login-title'>
           <h1>CHRONICLE</h1>
           <p>A writer&apos;s aid to inspire, plan, enhance and build worlds!</p>
+          <button className='about-btn' onClick={() => this.props.dispatch(openAbout())}>Tell me more!</button>
+          <AboutModal isOpen={this.props.isOpen}/>
           
         </div>
         <div className='login-container'>
@@ -38,4 +42,10 @@ export class Login extends React.Component {
   }
 }
 
-export default connect()((withRouter)(Login));
+const mapStateToProps = state => {
+  return {
+    isOpen : state.modal.aboutOpen
+  };
+}
+
+export default connect(mapStateToProps)((withRouter)(Login));
