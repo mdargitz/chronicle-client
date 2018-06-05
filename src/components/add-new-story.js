@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { createStory } from '../actions/stories';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './new-detail.css';
 
 //Properites from Parent: none
@@ -9,9 +10,13 @@ import './new-detail.css';
 export function AddNewStory(props) {
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     const title = document.forms['addStory'].elements['title'].value;
-    props.dispatch(createStory(title));
+    props.dispatch(createStory(title))
+      .then(result => {
+        props.history.push(`/stories/${result.data.slice(-1).pop().id}`);
+      });
     document.forms['addStory'].reset();
   };
 
@@ -30,4 +35,8 @@ export function AddNewStory(props) {
 
 }
 
-export default connect()(AddNewStory);
+const mapStateToProps = state => {
+  return {stories : state.content.stories};
+};
+
+export default connect(mapStateToProps)((withRouter)(AddNewStory));
