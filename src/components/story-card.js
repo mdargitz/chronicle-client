@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {deleteStory} from '../../actions/stories';
+import {deleteStory} from '../actions/stories';
 import {Link} from 'react-router-dom';
 import React from 'react';
-import '../detail-card.css';
+import './detail-card.css';
 
 //Properites from Parent: id of specific story
 //Properties from Redux: story details of specified ID

@@ -1,8 +1,8 @@
 import AddNewStory from './add-new-story';
-import Banner from '../banner';
+import Banner from './banner';
 import {connect} from 'react-redux';
-import { getStories } from '../../actions/stories';
-import mustLogin from '../must-login';
+import { getStories } from '../actions/stories';
+import mustLogin from './must-login';
 import React from 'react';
 import StoryList from './story-list';
 import './stories.css';

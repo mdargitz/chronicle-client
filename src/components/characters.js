@@ -1,9 +1,9 @@
-import AddNewDetail from '../new-detail';
-import Banner from '../banner';
+import AddNewDetail from './new-detail';
+import Banner from './banner';
 import{connect} from 'react-redux';
-import DetailList from '../detail-list';
-import {getStories, getCharacters} from '../../actions/stories';
-import mustLogin from '../must-login';
+import DetailList from './detail-list';
+import {getStories, getCharacters} from '../actions/stories';
+import mustLogin from './must-login';
 import React from 'react';
 
 //Properites from Parent: (from ROUTE) -storyID

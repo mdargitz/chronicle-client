@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {createStory} from '../../actions/stories';
+import { connect } from 'react-redux';
+import { createStory } from '../actions/stories';
 import React from 'react';
-import '../new-detail.css';
+import './new-detail.css';
 
 //Properites from Parent: none
 //Properties from Redux: dispatch

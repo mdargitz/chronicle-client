@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import React from 'react';
 import StoryCard from './story-card';
-import '../detail-list.css';
+import './detail-list.css';
 
 //Properites from Parent: none
 //Properties from Redux: all story details
