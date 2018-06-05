@@ -24,6 +24,7 @@ export class DetailsForm extends React.Component{
       this.props.dispatch(updatePlot(values, this.props.id, this.props.storyId));
     }
     this.props.dispatch(closeModal());
+    
   }
 
 
@@ -31,25 +32,30 @@ export class DetailsForm extends React.Component{
     const fields = this.props.fields.map((field, index) => {
       return <Field
         key={index}
-        type="input"
         component={Input}
         label={field.label}
         name={field.name}
         placeholder={field.placeholder}
-        element="input"
+        element={field.element || 'input'}
       />;
     });
 
+    let succeeded;
+    if(this.props.submitSucceeded){
+      succeeded = <div className='success'>Success!</div>;
+    }
 
     return(
       <form 
         className='details-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        {succeeded}
         {fields}
         <button type="submit">Update!</button>
       </form>
     );
   }
 }
+
 
 export default reduxForm({})(DetailsForm);

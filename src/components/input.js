@@ -27,16 +27,17 @@ export default class Input extends React.Component{
       <div className='field-container'>
         <label htmlFor={this.props.input.name}>
           {this.props.label}
-          {/* //IF there is an error or warning shows it here */}
+          {/* if there is an error or warning shows it here */}
           {error}
           {warning}
         </label>
         <Element
           {...this.props.input}
           id={this.props.input.name}
-          type={this.props.type}
           ref={input => (this.input = input)}
           placeholder={this.props.placeholder || null}
+          rows='4'
+          cols='40'
         >
 
           {this.props.children}

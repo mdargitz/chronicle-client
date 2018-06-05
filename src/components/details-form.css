@@ -19,3 +19,11 @@
   color: white;
   background: #e46237;
 }
+
+.success {
+  color: green;
+  background: lightgreen;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}

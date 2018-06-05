@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal';
 import DetailsForm from './details-form';
+import './edit-modal.css';
 
 export function EditModal(props){
 //needs storyId, itemId, type
@@ -24,13 +25,16 @@ export function EditModal(props){
         placeholder: item.occupation},
       {name: 'description',
         label: 'Description',
-        placeholder: item.description},
+        placeholder: item.description,
+        element: 'textarea'},
       {name: 'personality',
         label: 'Personality',
-        placeholder: item.personality},
+        placeholder: item.personality,
+        element: 'textarea'},
       {name: 'background',
         label: 'Background',
-        placeholder: item.background},
+        placeholder: item.background,
+        element: 'textarea'},
       {name: 'picture',
         label: 'Image URL',
         placeholder: item.picture}
@@ -44,10 +48,12 @@ export function EditModal(props){
         placeholder: item.name},
       {name: 'description',
         label: 'Description',
-        placeholder: item.description},
+        placeholder: item.description,
+        element: 'textarea'},
       {name: 'notes',
         label: 'Notes',
-        placeholder: item.notes},
+        placeholder: item.notes,
+        element: 'textarea'},
       {name: 'picture',
         label: 'Image URL',
         placeholder: item.picture}
@@ -72,7 +78,7 @@ export function EditModal(props){
         fields={formFields}
         storyId={props.storyId}
         id={props.id}/>
-      <button onClick={()=> props.dispatch(closeModal())}>Cancel</button>
+      <button className='cancel-btn' onClick={()=> props.dispatch(closeModal())}>Cancel</button>
     </ReactModal>
   );
 }

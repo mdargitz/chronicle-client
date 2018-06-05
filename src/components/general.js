@@ -28,7 +28,8 @@ export class General extends React.Component {
               placeholder: this.props.story.title}, 
             {name : 'description',
               label : 'Overall Description',
-              placeholder: this.props.story.description},
+              placeholder: this.props.story.description,
+              element: 'textarea'},
             {name : 'picture',
               label : 'Picture URL',
               placeholder: this.props.story.picture},
@@ -40,10 +41,12 @@ export class General extends React.Component {
               placeholder: this.props.story.period},
             {name : 'plotsummary',
               label : 'Plot Summary',
-              placeholder: this.props.story.plotsummary},
+              placeholder: this.props.story.plotsummary,
+              element: 'textarea'},
             {name : 'settingsummary',
               label : 'Setting Summary',
-              placeholder: this.props.story.settingsummary}]} 
+              placeholder: this.props.story.settingsummary,
+              element: 'textarea'}]} 
             form="general"/>
         </div>
       );

@@ -45,7 +45,7 @@ export const loginError = error => {
 const storeToken = (token, dispatch) => {
   const decodeToken = jwtDecode(token);
   dispatch(setStateToken(token));
-  dispatch(loginSuccess(decodeToken.user));
+  dispatch(loginSuccess(decodeToken.user.username));
   try {
     localStorage.setItem('token', token);
   }

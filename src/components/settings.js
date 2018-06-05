@@ -19,8 +19,10 @@ export class Settings extends React.Component {
         <div>
           <Banner type='settings'/>
           <AddNewDetail type='setting' storyId={this.props.match.params.storyId}/>
-          {this.props.loading}
-          {this.props.error}
+          <div className='error'>
+            {this.props.loading}
+            {this.props.error}
+          </div>
           <DetailList type='settings' storyId={this.props.match.params.storyId}/>
         </div>
       );
