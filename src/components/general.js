@@ -20,6 +20,8 @@ export class General extends React.Component {
             storyTitle={this.props.story.title} 
             storyDescription={this.props.story.description} />
           <p className='directions'>Click an empty space to add a detail or an existing detail to change it!</p>
+          {this.props.error}
+          {this.props.loading}
           <DetailsForm id={this.props.match.params.storyId} 
             fields={[{name : 'title',
               label : 'Title',
@@ -53,7 +55,11 @@ export class General extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  return {story : state.content.stories[props.match.params.storyId]};
+  return {
+    story : state.content.stories[props.match.params.storyId],
+    loading : state.content.loading,
+    error : state.content.error
+  };
 };
 
 export default mustLogin()(connect(mapStateToProps)(General));

@@ -1,6 +1,6 @@
 .reg-container {
   width:300px;
-  height:400px;
+  height:450px;
   position:absolute;
   left:50%;
   top:50%;
@@ -15,7 +15,7 @@
 }
 
 .reg-background {
-  background: url(https://picsum.photos/600/?random);
+  background: url(https://image.ibb.co/iXNRyT/Webp_net_resizeimage_4.jpg);
   background-size: cover;
   height: 100vh;
   overflow: hidden;

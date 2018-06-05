@@ -5,19 +5,28 @@ import {login} from '../actions/login';
 import { required, notEmpty } from '../validators';
 import {withRouter} from 'react-router-dom';
 import './login-form.css';
+import {connect} from 'react-redux';
 
 export class LoginForm extends React.Component {
   
   onSubmit(values){
     const {username, password} = values;
     this.props.dispatch(login(username, password))
-      .then(() => this.props.history.push('/stories'));
+      .then(() => { 
+        if (localStorage.getItem('token')){
+          this.props.history.push('/stories');
+        }});
   }
 
   render(){
+
+    let error = <div className='submit-error'>{this.props.error}</div>;
+    let loading = <div className='loading'>{this.props.loading}</div>;
     return(
       <form className='login-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        {error}
+        {loading}
         <Field 
           type="text" 
           element="input"
@@ -39,6 +48,13 @@ export class LoginForm extends React.Component {
   
 }
 
+const mapStateToProps = state => {
+  return {
+    error: state.loginReducer.error,
+    loading: state.loginReducer.loading
+  };
+};
+
 export default reduxForm({
   form : 'loginForm'
-})((withRouter)(LoginForm));
+})(connect(mapStateToProps)((withRouter)(LoginForm)));

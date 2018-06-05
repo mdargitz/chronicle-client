@@ -4,11 +4,14 @@ const defaultCharacterPicture = 'https://impactspace.com/images/uploads/person-d
 const defaultSettingPicture = 'http://files.softicons.com/download/system-icons/web0.2ama-icons-by-chrfb/png/256x256/World%20-%20America.png';
 const defaultPlotPicture = 'http://plugins.netbeans.org/data/images/1385845308_logo.png';
 
+
+//Simple action to set loading to true when requesting stories list
 export const REQUEST_STORIES = 'REQUEST_STORIES';
 export const requestStories = () => {
   return {type: REQUEST_STORIES};
 };
 
+//Simple action to set stories object in redux state on successful get request
 export const STORIES_SUCCESS = 'STORIES_SUCCESS';
 export const storiesSuccess = data => {
   return {
@@ -17,6 +20,7 @@ export const storiesSuccess = data => {
   };  
 };
 
+//Simple action to set error in redux state on unsuccessful get request
 export const STORIES_ERROR = 'STORIES_ERROR';
 export const storiesError = error => {
   return {
@@ -25,6 +29,7 @@ export const storiesError = error => {
   };
 };
 
+//Adds characters array to current stories list in redux store
 export const CHARACTERS_SUCCESS = 'CHARACTERS_SUCCESS';
 export const charactersSuccess = (data, storyId) => {
   return {
@@ -34,6 +39,7 @@ export const charactersSuccess = (data, storyId) => {
   };
 };
 
+//Adds settings array to current stories list in redux store
 export const SETTINGS_SUCCESS = 'SETTINGS_SUCCESS';
 export const settingsSuccess = (data, storyId) => {
   return {
@@ -42,6 +48,8 @@ export const settingsSuccess = (data, storyId) => {
     storyId
   };
 };
+
+//Adds plots array to current stories list in redux store
 export const PLOTS_SUCCESS = 'PLOTS_SUCCESS';
 export const plotsSuccess = (data, storyId) => {
   return {
@@ -51,9 +59,11 @@ export const plotsSuccess = (data, storyId) => {
   };
 };
 
+
+
 // *********** STORY ASYNC ACTIONS *********** //
 
-//Get all Stories (general info)
+//Get all Stories (general info) - called after every other async action
 export const getStories = () => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -66,10 +76,12 @@ export const getStories = () => dispatch => {
       if (result.ok){
         return result.json();
       }
-      throw new Promise.reject(result.statusText);
+      throw new Error(result);
     })
     .then(data => dispatch(storiesSuccess(data)))
-    .catch(err => console.log(err));
+    .catch(err => {
+      dispatch(storiesError(err));
+    });
  
 };
 
@@ -87,7 +99,9 @@ export const updateStory = (updateObj, id) => dispatch => {
   })
     .then(()=> {
       return dispatch(getStories());})
-    .catch(() => console.log('an error!')); //on error/not found push to notfound component
+    .catch(() => {
+      dispatch(storiesError('Server Error: Could not update this story. Please check your connection and reload'));
+    });
 };
 
 //Create a Story
@@ -102,8 +116,15 @@ export const createStory = title => dispatch => {
     },
     body: JSON.stringify({title, picture:defaultStoryPicture}) 
   })
+    .then(result => {
+      if (result.ok){
+        return result.json();
+      }
+      else throw new Error({message: 'An error occurred! Please try again'});
+    })
     .then(()=> dispatch(getStories()))
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError(
+      'Server Error: Could not add a new story. Please check your network connection and reload'));});
 };
 
 //Delete a Story
@@ -117,12 +138,18 @@ export const deleteStory = id => dispatch => {
     }
   })
     .then(() => dispatch(getStories()))
-    .catch((err) => dispatch(storiesError(err)));
+    .catch(() => {
+      dispatch(storiesError('Server Error: Could not delete this story. Please check your connection and reload'));
+    });
 };
 
 
+
+
+
+
 // *********** CHARACTER ASYNC ACTIONS *********** //
-//get all
+//get all - requires storyId
 export const getCharacters = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -139,8 +166,8 @@ export const getCharacters = storyId => dispatch => {
       throw new Error(result.statusText);
     })
     .then(data => dispatch(charactersSuccess(data, storyId)))
-    .catch(err => console.log(err));
-
+    .catch(() => {dispatch(storiesError('Server Error: Could not get characters. Please check your connection and reload'));
+    });
 };
 
 //edit existing
@@ -157,7 +184,8 @@ export const updateCharacter = (updateObj, id, storyId) => dispatch => {
   })
     .then(()=> {
       return dispatch(getCharacters(storyId));})
-    .catch(() => console.log('an error!'));
+      .catch(() => {dispatch(storiesError('Server Error: Could not get characters. Please check your connection and reload'));
+    });
 };
 
 //add new

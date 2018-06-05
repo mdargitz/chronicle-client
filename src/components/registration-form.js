@@ -6,6 +6,7 @@ import { registerUser } from '../actions/registration';
 import { login } from '../actions/login';
 import {withRouter} from 'react-router-dom';
 import './registration-form.css';
+import {connect} from 'react-redux';
 
 export class RegistrationForm extends React.Component {
 
@@ -13,14 +14,26 @@ export class RegistrationForm extends React.Component {
     const {username, password} = values;
     const user = {username, password};
     return this.props.dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)))
-      .then(() => this.props.history.push('/stories'));
+      .then(() => {
+        if(!this.props.error){
+          return this.props.dispatch(login(username, password))
+            .then(() => this.props.history.push('/stories'));
+        }
+      });
   }
 
   render(){
+
+    let error = <div className='submit-error'>{this.props.error}</div>;
+    let loading = <div className='loading'>{this.props.loading}</div>;
+
     return(
       <form className='reg-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        
+        {error}
+        {loading}
+
         <Field 
           name="username"
           type="text"
@@ -52,6 +65,13 @@ export class RegistrationForm extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+  return {
+    error : state.auth.error,
+    loading: state.auth.loading
+  };
+};
+
 export default reduxForm({
   form : 'RegistrationForm'
-})((withRouter)(RegistrationForm));
+})(connect(mapStateToProps)((withRouter)(RegistrationForm)));

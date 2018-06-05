@@ -22,3 +22,10 @@
 .login-form button:hover {
   background: #f16030;
 }
+
+.submit-error {
+  color: red;
+  max-width: 200px;
+  text-align: center;
+  margin: 10px 0;
+}

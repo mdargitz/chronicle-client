@@ -1,3 +1,4 @@
+//Simple action to set openModal to **true** in redux store (applies to all 'edit' modals)
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const openModal = () => {
   return {
@@ -5,6 +6,7 @@ export const openModal = () => {
   };
 };
 
+//Simple action to set openModal to **false** in redux store (applies to all 'edit' modals)
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const closeModal = () => {
   return {
@@ -12,6 +14,7 @@ export const closeModal = () => {
   };
 };
 
+//Simple action to set openAbout to **true** in redux store (applies to all 'about' modals)
 export const OPEN_ABOUT = 'OPEN_ABOUT';
 export const openAbout = () => {
   return {
@@ -19,6 +22,7 @@ export const openAbout = () => {
   };
 };
 
+//Simple action to set openAbout to **false** in redux store (applies to all 'about' modals)
 export const CLOSE_ABOUT = 'CLOSE_ABOUT';
 export const closeAbout = () => {
   return {

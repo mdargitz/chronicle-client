@@ -21,6 +21,7 @@ const storyReducer = (state=initialState, action) =>{
     });
     return {
       ...state,
+      error: false,
       loading: false,
       stories
     };
@@ -30,7 +31,7 @@ const storyReducer = (state=initialState, action) =>{
     return {
       ...state,
       loading: false,
-      error : action.error
+      error : action.error.toString() 
     };
   }
 

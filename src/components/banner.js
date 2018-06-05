@@ -20,7 +20,7 @@ export default function Banner(props){
     header = 'Plot Points';
   }
   if (props.type === 'stories'){
-    bgimg = 'https://picsum.photos/600/?random';
+    bgimg = 'https://image.ibb.co/gyKQQ8/Webp_net_resizeimage_5.jpg';
     header = 'Chronicle';
     description = 'Add one or more stories below and get writing!';
   }

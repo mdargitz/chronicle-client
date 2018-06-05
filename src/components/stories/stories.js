@@ -5,6 +5,7 @@ import StoryList from './story-list';
 import AddNewStory from './add-new-story';
 import mustLogin from '../must-login';
 import Banner from '../banner';
+import './stories.css';
 
 export class Stories extends React.Component {
   componentWillMount(){
@@ -12,31 +13,30 @@ export class Stories extends React.Component {
   }
 
   render(){
-
-    if (this.props.loading){
-      return <div>Loading...</div>;
-    }
-
-    if (this.props.error) {
-      return <div>Uh oh! Something went wrong: {this.props.error}</div>;
-    }
+    let loading = <div className='loading'>{this.props.loading}</div>;
+    let error = <div className='story-error'>{this.props.error}</div>;
 
     if (Object.keys(this.props.stories).length > 0 ){
       return (
         <div>
           <Banner type='stories'/>
           <AddNewStory />
+          {error}
+          {loading}
           <StoryList />
         </div>    
       );
     }
-    //TO DO- render the list always, just dont have anything if object is empty
-    return (
-      <div>
-        <Banner type='stories'/>
-        <AddNewStory />
-      </div> );
-       
+    else {
+      return (
+        <div>
+          <Banner type='stories' />
+          <AddNewStory />
+          {error}
+          {loading}
+        </div>
+      );
+    }
   }}
 
 const mapStateToProps = state => {
