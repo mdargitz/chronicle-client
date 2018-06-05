@@ -18,7 +18,7 @@ export function AddNewStory(props) {
         <i className="fas fa-plus-circle"></i>
         <form id="addStory" onSubmit={(e) => handleSubmit(e) }>
           <label htmlFor="title" >New Title</label>
-          <input required name='title' type="input" id="title" placeholder='new story title'/>
+          <input required name='title' type="input" id="title" placeholder='new story title' aria-label='title'/>
           <button type="submit">Add New</button>
         </form>
       </div>

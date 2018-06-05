@@ -14,3 +14,6 @@ color: white;
 background: #23404d;
 }
 
+.side-nav label {
+  display: none;
+}

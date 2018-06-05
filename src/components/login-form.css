@@ -8,10 +8,10 @@
 .login-form button {
   border: none;
   border-radius: 5px;
-  background: #ffa587;
+  background: #ff9470;
   box-shadow: #f16030 0px 5px 0px;
   color: #23404d;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 20px;
   padding: 10px;
   font-weight: bold;
@@ -24,7 +24,7 @@
 }
 
 .submit-error {
-  color: red;
+  color: rgb(87, 0, 0);
   max-width: 200px;
   text-align: center;
   margin: 10px 0;

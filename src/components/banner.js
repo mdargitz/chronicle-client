@@ -30,7 +30,7 @@ export default function Banner(props){
     <div className="banner" style={{backgroundImage : `url(${bgimg})`}}>
       <div className="content-container"> 
         <h1>{header}</h1>
-        <h2>{description}</h2>
+        <h2>{description || 'no description'}</h2>
       </div>
     </div>);
 }

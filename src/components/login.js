@@ -20,14 +20,14 @@ export class Login extends React.Component {
     }
     return (
       <div className='login-background'>
-        <div className='login-title'>
+        <header role='banner' className='login-title'>
           <h1>CHRONICLE</h1>
           <p>A writer&apos;s aid to inspire, plan, enhance and build worlds!</p>
           <button className='about-btn' onClick={() => this.props.dispatch(openAbout())}>Tell me more!</button>
           <AboutModal isOpen={this.props.isOpen}/>
           
-        </div>
-        <div className='login-container'>
+        </header>
+        <main role='main' className='login-container'>
           <h2>Log In</h2>
           
           <LoginForm />
@@ -35,7 +35,7 @@ export class Login extends React.Component {
           <button className='guest-btn' 
             onClick={()=>this.handleGuestLogin()}>
           - or login as a guest -</button>
-        </div>
+        </main>
 
       </div>
     );

@@ -19,11 +19,19 @@ export class Stories extends React.Component {
     if (Object.keys(this.props.stories).length > 0 ){
       return (
         <div>
-          <Banner type='stories'/>
-          <AddNewStory />
-          {error}
-          {loading}
-          <StoryList />
+          <header role='banner'>
+            <Banner type='stories'/>
+          </header>
+          <main role='main'>
+            <section>
+              <AddNewStory />
+            </section>
+            <section>
+              {error}
+              {loading}
+              <StoryList />
+            </section>
+          </main>
         </div>    
       );
     }

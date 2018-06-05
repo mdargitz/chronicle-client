@@ -35,13 +35,19 @@ export function SideNav(props) {
   };
  
   return (
-    <form className='side-nav'>
-      <select id='link' onChange={(e) => handleChange(e.target[e.target.selectedIndex].value)}> 
-        <option hidden>{displayedLink}</option>
-        {optionElems}
-        <option value='back'>Back to All Stories</option>
-      </select>
-    </form>
+    <nav className='side-nav'>
+      <form >
+        <label htmlFor='link'>Navigation</label>
+        <select 
+          aria-label='Navigate to another page'
+          id='link' 
+          onChange={(e) => handleChange(e.target[e.target.selectedIndex].value)}> 
+          <option hidden>{displayedLink}</option>
+          {optionElems}
+          <option value='back'>Back to All Stories</option>
+        </select>
+      </form>
+    </nav>
   );
 }
 

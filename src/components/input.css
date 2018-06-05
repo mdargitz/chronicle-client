@@ -15,7 +15,7 @@
 }
 
 .error {
-  color: red;
+  color: rgb(165, 0, 0);
   font-size: 12px;
   margin-top: 5px;
 }

@@ -11,15 +11,15 @@ export class Registration extends React.Component{
     }
     return (
       <div className='reg-background'>
-        <div className='reg-title'>
+        <header role='banner' className='reg-title'>
           <h1>CHRONICLE</h1>
           <p>Sign up to create stories, enter story details and get writing!</p>
-        </div>
-        <div className='reg-container'>
+        </header>
+        <main role='main' className='reg-container'>
           <h2>Create An Account</h2>
           <RegistrationForm />
           Already have an account? <Link to='/login'>Log in here</Link>
-        </div>
+        </main>
       </div>
     );
   }

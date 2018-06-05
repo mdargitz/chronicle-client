@@ -15,39 +15,47 @@ export class General extends React.Component {
     if (this.props.story) {
       return (
         <div>
-          <Banner 
-            storyImg={this.props.story.picture} 
-            storyTitle={this.props.story.title} 
-            storyDescription={this.props.story.description} />
-          <p className='directions'>Click an empty space to add a detail or an existing detail to change it!</p>
-          {this.props.error}
-          {this.props.loading}
-          <DetailsForm id={this.props.match.params.storyId} 
-            fields={[{name : 'title',
-              label : 'Title',
-              placeholder: this.props.story.title}, 
-            {name : 'description',
-              label : 'Overall Description',
-              placeholder: this.props.story.description,
-              element: 'textarea'},
-            {name : 'picture',
-              label : 'Picture URL',
-              placeholder: this.props.story.picture},
-            {name : 'genre',
-              label : 'Genre',
-              placeholder: this.props.story.genre},
-            {name : 'period',
-              label : 'Time Period',
-              placeholder: this.props.story.period},
-            {name : 'plotsummary',
-              label : 'Plot Summary',
-              placeholder: this.props.story.plotsummary,
-              element: 'textarea'},
-            {name : 'settingsummary',
-              label : 'Setting Summary',
-              placeholder: this.props.story.settingsummary,
-              element: 'textarea'}]} 
-            form="general"/>
+          <header role='banner'>
+            <Banner 
+              storyImg={this.props.story.picture} 
+              storyTitle={this.props.story.title} 
+              storyDescription={this.props.story.description} />
+          </header>
+          <main>
+            <section>
+              <p className='directions'>Click an empty space to add a detail or an existing detail to change it!</p>
+              {this.props.error}
+              {this.props.loading}
+            </section>
+            <section>
+              <DetailsForm id={this.props.match.params.storyId} 
+                fields={[{name : 'title',
+                  label : 'Title',
+                  placeholder: this.props.story.title}, 
+                {name : 'description',
+                  label : 'Overall Description',
+                  placeholder: this.props.story.description,
+                  element: 'textarea'},
+                {name : 'picture',
+                  label : 'Picture URL',
+                  placeholder: this.props.story.picture},
+                {name : 'genre',
+                  label : 'Genre',
+                  placeholder: this.props.story.genre},
+                {name : 'period',
+                  label : 'Time Period',
+                  placeholder: this.props.story.period},
+                {name : 'plotsummary',
+                  label : 'Plot Summary',
+                  placeholder: this.props.story.plotsummary,
+                  element: 'textarea'},
+                {name : 'settingsummary',
+                  label : 'Setting Summary',
+                  placeholder: this.props.story.settingsummary,
+                  element: 'textarea'}]} 
+                form="general"/>
+            </section>
+          </main>
         </div>
       );
     }

@@ -19,9 +19,9 @@ export class StoryCard extends React.Component {
           <h3>{title}</h3>
           <div className='card-icons'>
             <Link to={redirectLink}>
-              <button><i className="fas fa-pencil-alt"></i></button>
+              <button><i className="fas fa-pencil-alt" aria-label='edit'></i></button>
             </Link>
-            <button onClick={() => this.props.dispatch(deleteStory(this.props.id))}><i className="fas fa-trash-alt"></i></button>
+            <button onClick={() => this.props.dispatch(deleteStory(this.props.id))}><i className="fas fa-trash-alt" aria-label='delete'></i></button>
           </div>
         </div>
       </div>
