@@ -170,7 +170,7 @@ export const getCharacters = storyId => dispatch => {
     });
 };
 
-//edit existing
+//edit existing character - requires charater's id, the story id to which it belogs, and an object with updates
 export const updateCharacter = (updateObj, id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -184,11 +184,11 @@ export const updateCharacter = (updateObj, id, storyId) => dispatch => {
   })
     .then(()=> {
       return dispatch(getCharacters(storyId));})
-      .catch(() => {dispatch(storiesError('Server Error: Could not get characters. Please check your connection and reload'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not edit character. Please check your connection and reload'));
     });
 };
 
-//add new
+//add new character, requires character name and the story to which it is associated
 export const createCharacter = (name, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -201,10 +201,11 @@ export const createCharacter = (name, storyId) => dispatch => {
     body: JSON.stringify({name, picture: defaultCharacterPicture}) 
   })
     .then(()=> dispatch(getCharacters(storyId)))
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not create character. Please check your connection and reload'));
+    });
 };
 
-//delete
+//delete a character, requires character ID and the story ID to which it belongs
 export const deleteCharacter = (id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -215,10 +216,15 @@ export const deleteCharacter = (id, storyId) => dispatch => {
     }
   })
     .then(() => dispatch(getCharacters(storyId)))
-    .catch((err) => console.log(err));
+    .catch(() => {dispatch(storiesError('Server Error: Could not delete character. Please check your connection and reload'));
+    });
 };
 
+
+
+
 // *********** Setting ASYNC ACTIONS *********** //
+//get all settings associated with a certain story ID
 export const getSettings = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -234,11 +240,13 @@ export const getSettings = storyId => dispatch => {
       throw new Promise.reject(result.statusText);
     })
     .then(data => dispatch(settingsSuccess(data, storyId)))
-    .catch(err => console.log(err));
+    .catch(() => {dispatch(storiesError('Server Error: Could not get settings. Please check your connection and reload'));
+    });
 
 };
 
-//edit existing
+// edit an existing setting
+// requires the id of the setting, the story ID to which it belongs and an object representing updates
 export const updateSetting = (updateObj, id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -252,10 +260,11 @@ export const updateSetting = (updateObj, id, storyId) => dispatch => {
   })
     .then(()=> {
       return dispatch(getSettings(storyId));})
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not update this setting. Please check your connection and reload'));
+    });
 };
 
-//add new
+//add a new setting- requires setting name and the story ID to which it belongs
 export const createSetting = (name, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -268,10 +277,11 @@ export const createSetting = (name, storyId) => dispatch => {
     body: JSON.stringify({name, picture: defaultSettingPicture}) 
   })
     .then(()=> dispatch(getSettings(storyId)))
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not create this setting. Please check your connection and reload'));
+    });
 };
 
-//delete
+//delete a setting - requires setting Id and the story ID to which it belongs
 export const deleteSetting = (id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -282,11 +292,12 @@ export const deleteSetting = (id, storyId) => dispatch => {
     }
   })
     .then(() => dispatch(getSettings(storyId)))
-    .catch((err) => console.log(err));
+    .catch(() => {dispatch(storiesError('Server Error: Could not delete this setting. Please check your connection and reload'));
+    });
 };
 
 // *********** Plot ASYNC ACTIONS *********** //
-//get all
+//get all plots- requires storyId to which they are associated
 export const getPlots = storyId => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -302,11 +313,13 @@ export const getPlots = storyId => dispatch => {
       throw new Error(result);
     })
     .then(data => dispatch(plotsSuccess(data, storyId)))
-    .catch(err => console.log('something went wrong'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not get all plot points. Please check your connection and reload'));
+    });
 
 };
 
-//edit existing
+// edit existing plot point
+// requires plot point's ID, the story ID to which it belongs and an object representing updates
 export const updatePlot= (updateObj, id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -320,10 +333,11 @@ export const updatePlot= (updateObj, id, storyId) => dispatch => {
   })
     .then(()=> {
       return dispatch(getPlots(storyId));})
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not update this plot point. Please check your connection and reload'));
+    });
 };
 
-//add new
+//add new plot point - requires name and story ID to which it belongs
 export const createPlot = (name, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -336,10 +350,11 @@ export const createPlot = (name, storyId) => dispatch => {
     body: JSON.stringify({name, picture: defaultPlotPicture}) 
   })
     .then(()=> dispatch(getPlots(storyId)))
-    .catch(() => console.log('an error!'));
+    .catch(() => {dispatch(storiesError('Server Error: Could not create this plot point. Please check your connection and reload'));
+    });
 };
 
-//delete
+//delete a plot point - requires plot point ID and the storyId to which it is associated
 export const deletePlot = (id, storyId) => dispatch => {
   dispatch(requestStories());
   const token = localStorage.getItem('token');
@@ -350,5 +365,6 @@ export const deletePlot = (id, storyId) => dispatch => {
     }
   })
     .then(() => dispatch(getPlots(storyId)))
-    .catch((err) => console.log(err));
+    .catch(() => {dispatch(storiesError('Server Error: Could not delete this plot point. Please check your connection and reload'));
+    });
 };

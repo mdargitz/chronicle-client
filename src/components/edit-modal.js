@@ -65,6 +65,8 @@ export function EditModal(props){
       appElement={document.getElementById('root')}
     >
       <h2>Updating &apos;{item.name}&apos;</h2> 
+      {props.loading}
+      {props.error}
       <DetailsForm 
         form={'edit' + props.type}
         fields={formFields}
@@ -78,8 +80,9 @@ export function EditModal(props){
 const mapStateToProps = (state, props) => {
   return {
     isOpen : state.modal.isOpen,
-    //hard coded to first item, need to grab actual item
-    items : state.content.stories[props.storyId][props.type]
+    items : state.content.stories[props.storyId][props.type],
+    error : state.content.error,
+    loading : state.content.loading
   };
 };
 

@@ -29,13 +29,18 @@ export class DetailList extends React.Component {
         </div>
       );
     }
-    return <div>Loading...</div>;
+    return (<div>
+      {this.props.loading}
+      {this.props.error}
+    </div>);
   }
 }
 
 const mapStateToProps = (state, props) => {
   return {
-    items : state.content.stories[props.storyId][props.type]
+    items : state.content.stories[props.storyId][props.type],
+    loading : state.content.loading,
+    error : state.content.error
   };
 };
 

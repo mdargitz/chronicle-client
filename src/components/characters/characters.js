@@ -19,6 +19,8 @@ export class Characters extends React.Component {
         <div>
           <Banner type='characters'/>
           <AddNewDetail type='character' storyId={this.props.match.params.storyId}/>
+          {this.props.loading}
+          {this.props.error}
           <DetailList type='characters' storyId={this.props.match.params.storyId}/>
         </div>
       );
@@ -29,7 +31,9 @@ export class Characters extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    storyData : state.content.stories[props.match.params.storyId]
+    storyData : state.content.stories[props.match.params.storyId],
+    loading : state.content.loading,
+    error : state.content.error
   };
 };
 
