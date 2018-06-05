@@ -1,7 +1,8 @@
+import { connect } from 'react-redux';
 import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
+//helper component wrapper to require token to access protected routes
 export default () => Component => {
   function mustLogin(props){
     if(props.loading){

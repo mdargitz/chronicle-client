@@ -1,11 +1,14 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {logout} from '../actions/login';
-import {withRouter} from 'react-router-dom';
 import AboutModal from './about-modal';
-import {openAbout } from '../actions/modal';
+import { connect } from 'react-redux';
+import { logout } from '../actions/login';
+import { openAbout } from '../actions/modal';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './top-nav.css';
 
+//Properites from Parent: history from withRouter
+//Properties from Redux: dispatch, AboutModal status
+//Additional Component Details: Not resuable
 export class TopNav extends React.Component{
 
   handleClick(){
@@ -29,6 +32,6 @@ const mapStateToProps = state => {
   return {
     isOpen : state.modal.aboutOpen
   };
-}
+};
 
 export default connect(mapStateToProps)((withRouter)(TopNav));

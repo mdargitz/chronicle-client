@@ -1,9 +1,11 @@
-import React from 'react';
 import {connect} from 'react-redux';
+import React from 'react';
 import StoryCard from './story-card';
 import '../detail-list.css';
 
-
+//Properites from Parent: none
+//Properties from Redux: all story details
+//Additional Component Details: Not resuable
 export class StoryList extends React.Component {
 
   render () {

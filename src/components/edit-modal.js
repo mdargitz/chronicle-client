@@ -5,8 +5,12 @@ import {closeModal} from '../actions/modal';
 import DetailsForm from './details-form';
 import './edit-modal.css';
 
+//Properites from Parent: ID of item, 
+//type of item (may be 'characters', 'settings', or 'plots'), 
+//associated story ID 
+//Properties from Redux: dispatch, editModal open status, item details (for placeholders)
+//Additional Component Details:React-Modal, Reusable
 export function EditModal(props){
-//needs storyId, itemId, type
 
   const item = props.items.filter(item => item.id === props.id)[0];
 
@@ -14,28 +18,28 @@ export function EditModal(props){
 
   if (props.type === 'characters'){
     formFields = [
-      {name: 'name',
+      {name: item.name + '-name',
         label: 'Name',
         placeholder: item.name},
-      {name: 'age',
+      {name: item.name +'age',
         label: 'Age',
         placeholder: item.age},
-      {name: 'occupation',
+      {name: item.name +'occupation',
         label: 'Occupation',
         placeholder: item.occupation},
-      {name: 'description',
+      {name: item.name +'description',
         label: 'Description',
         placeholder: item.description,
         element: 'textarea'},
-      {name: 'personality',
+      {name: item.name +'personality',
         label: 'Personality',
         placeholder: item.personality,
         element: 'textarea'},
-      {name: 'background',
+      {name: item.name + 'background',
         label: 'Background',
         placeholder: item.background,
         element: 'textarea'},
-      {name: 'picture',
+      {name: item.name + 'picture',
         label: 'Image URL',
         placeholder: item.picture}
     ];
@@ -43,18 +47,18 @@ export function EditModal(props){
 
   else{
     formFields = [
-      {name: 'name',
+      {name: item.name + '-name',
         label: 'Name',
         placeholder: item.name},
-      {name: 'description',
+      {name: item.name +'description',
         label: 'Description',
         placeholder: item.description,
         element: 'textarea'},
-      {name: 'notes',
+      {name: item.name +'notes',
         label: 'Notes',
         placeholder: item.notes,
         element: 'textarea'},
-      {name: 'picture',
+      {name: item.name +'picture',
         label: 'Image URL',
         placeholder: item.picture}
     ];
@@ -62,6 +66,7 @@ export function EditModal(props){
   
 
   return (
+
     <ReactModal 
       isOpen={props.isOpen}
       onRequestClose={() => props.dispatch(closeModal())}
@@ -70,15 +75,19 @@ export function EditModal(props){
       shouldCloseOnOverlayClick={false}
       appElement={document.getElementById('root')}
     >
-      <h2>Updating &apos;{item.name}&apos;</h2> 
-      {props.loading}
-      {props.error}
-      <DetailsForm 
-        form={'edit' + props.type}
-        fields={formFields}
-        storyId={props.storyId}
-        id={props.id}/>
-      <button className='cancel-btn' onClick={()=> props.dispatch(closeModal())}>Cancel</button>
+      <section>
+        <h2>Updating &apos;{item.name}&apos;</h2> 
+        {props.loading}
+        {props.error}
+      </section>
+      <section>
+        <DetailsForm 
+          form={'edit' + props.type}
+          fields={formFields}
+          storyId={props.storyId}
+          id={props.id}/>
+        <button className='cancel-btn' onClick={()=> props.dispatch(closeModal())}>Cancel</button>
+      </section>
     </ReactModal>
   );
 }

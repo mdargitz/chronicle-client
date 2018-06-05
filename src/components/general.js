@@ -1,11 +1,14 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import { getStories } from '../actions/stories';
 import Banner from './banner';
+import {connect} from 'react-redux';
 import DetailsForm from './details-form';
+import { getStories } from '../actions/stories';
 import mustLogin from './must-login';
+import React from 'react';
 import './general.css';
 
+//Properites from Parent: ROUTE information, StoryID
+//Properties from Redux: dispatch, general story information for associated ID
+//Additional Component Details:Secured by login, not reusable
 export class General extends React.Component {
   componentWillMount(){
     this.props.dispatch(getStories());

@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux';
-import {reducer as formReducer} from 'redux-form';
+import authReducer from './auth';
+import { combineReducers } from 'redux';
 import loginReducer from './login';
-import storyReducer from './stories';
 import modalReducer from './modal';
 import navigationReducer from './navigation';
-import authReducer from './auth';
+import { reducer as formReducer } from 'redux-form';
+import storyReducer from './stories';
 
 const rootReducer = combineReducers({
   form : formReducer,

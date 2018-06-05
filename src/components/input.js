@@ -1,6 +1,9 @@
 import React from 'react';
 import './input.css';
 
+//Properites from Parent: input label, name, element, placeholder & meta information from Redux-Form
+//Properties from Redux: none
+//Additional Component Details: Used in all redux-forms
 export default class Input extends React.Component{
   //After component is updated, check to see if active, and if so, move focus
   componentDidUpdate(prev){

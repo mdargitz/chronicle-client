@@ -1,9 +1,12 @@
+import {closeAbout} from '../actions/modal';
 import React from 'react';
 import ReactModal from 'react-modal';
-import {closeAbout} from '../actions/modal';
 import {connect} from 'react-redux';
 import './about-modal.css';
 
+//Properites from Parent: none
+//Properties from Redux: aboutOpen modal status, dispatch
+//Additional Component Details: Used in login screen and in topNav
 export function AboutModal(props){
   return (
     <ReactModal 

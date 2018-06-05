@@ -1,13 +1,15 @@
-import React from 'react';
-import {Field, reduxForm} from 'redux-form';
-import Input from './input';
-import { updateStory, updateCharacter, updateSetting, updatePlot } from '../actions/stories';
 import { closeModal } from '../actions/modal';
+import { Field, reduxForm } from 'redux-form';
+import Input from './input';
+import React from 'react';
+import { updateStory, updateCharacter, updateSetting, updatePlot } from '../actions/stories';
 import './details-form.css';
 
+//Properites from Parent: fields to be rendered (including the name, label, element type (if not input) and placeholder)
+//story ID of given details
+//Properties from Redux: dispatch, redux-form values
+//Additional Component Details:Redux-Form, Reusable
 export class DetailsForm extends React.Component{
-//get needed fields from parent
-//get form name for state from props
 
   onSubmit(values){
 

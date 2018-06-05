@@ -36,7 +36,6 @@ const storyReducer = (state=initialState, action) =>{
   }
 
   if(action.type === CHARACTERS_SUCCESS){
-    //TO DO - clean this up if possible?
     const updatedStory = Object.assign({},state.stories[action.storyId],{
       characters : action.data
     });
@@ -52,7 +51,6 @@ const storyReducer = (state=initialState, action) =>{
   }
 
   if(action.type === SETTINGS_SUCCESS){
-    //TO DO - clean this up if possible? - change to spread operator
     const updatedStory = Object.assign({},state.stories[action.storyId],{
       settings : action.data
     });
@@ -68,7 +66,6 @@ const storyReducer = (state=initialState, action) =>{
   }
 
   if(action.type === PLOTS_SUCCESS){
-    //TO DO - clean this up if possible?
     const updatedStory = Object.assign({},state.stories[action.storyId],{
       plots : action.data
     });

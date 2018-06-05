@@ -5,3 +5,8 @@
   padding: 20px;
   margin: 0;
 }
+
+.total-items {
+  text-align: center;
+  margin-top: 20px;
+}

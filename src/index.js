@@ -1,19 +1,19 @@
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import Characters from './components/characters';
+import General from './components/general';
+import Login from './components/login';
+import Plots from './components/plots';
+import {Provider} from 'react-redux';
+import Settings from './components/settings';
+import SideNav from './components/side-nav';
+import store from './store';
+import Stories from './components/stories';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
-import Login from './components/login';
 import Registration from './components/registration';
-import Stories from './components/stories';
-import SideNav from './components/side-nav';
 import registerServiceWorker from './registerServiceWorker';
-import {Provider} from 'react-redux';
-import store from './store';
-import General from './components/general';
-import Characters from './components/characters';
-import Settings from './components/settings';
-import Plots from './components/plots';
 import TopNav from './components/top-nav';
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>

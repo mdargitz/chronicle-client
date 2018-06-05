@@ -1,15 +1,18 @@
-
-import React from 'react';
 import {connect} from 'react-redux';
 import {createStory} from '../../actions/stories';
+import React from 'react';
 import '../new-detail.css';
 
+//Properites from Parent: none
+//Properties from Redux: dispatch
+//Additional Component Details: not resuable
 export function AddNewStory(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const title = document.forms['addStory'].elements['title'].value;
     props.dispatch(createStory(title));
+    document.forms['addStory'].reset();
   };
 
   return (
@@ -26,10 +29,5 @@ export function AddNewStory(props) {
   );
 
 }
-const mapStateToProps = state => {
-  return {
-    stories : state.content.stories
-  };
-};
 
-export default connect(mapStateToProps)(AddNewStory);
+export default connect()(AddNewStory);

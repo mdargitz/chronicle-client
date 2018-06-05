@@ -1,9 +1,12 @@
-import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {deleteStory} from '../../actions/stories';
+import {Link} from 'react-router-dom';
+import React from 'react';
 import '../detail-card.css';
 
+//Properites from Parent: id of specific story
+//Properties from Redux: story details of specified ID
+//Additional Component Details: Not resuable
 export class StoryCard extends React.Component {
 
   render() {
@@ -19,9 +22,9 @@ export class StoryCard extends React.Component {
           <h3>{title}</h3>
           <div className='card-icons'>
             <Link to={redirectLink}>
-              <button><i className="fas fa-pencil-alt" aria-label='edit'></i></button>
+              <button><i className="fas fa-pencil-alt" aria-label={'edit' + title}></i></button>
             </Link>
-            <button onClick={() => this.props.dispatch(deleteStory(this.props.id))}><i className="fas fa-trash-alt" aria-label='delete'></i></button>
+            <button onClick={() => this.props.dispatch(deleteStory(this.props.id))}><i className="fas fa-trash-alt" aria-label={'delete ' + title}></i></button>
           </div>
         </div>
       </div>

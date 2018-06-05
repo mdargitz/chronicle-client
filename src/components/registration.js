@@ -1,9 +1,12 @@
+import { connect } from 'react-redux';
 import React from 'react';
-import {connect} from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
 import RegistrationForm from './registration-form';
-import {Redirect, Link} from 'react-router-dom';
 import './registration.css';
 
+//Properites from Parent: none
+//Properties from Redux: dispatch
+//Additional Component Details: Not resuable
 export class Registration extends React.Component{
   render(){
     if (localStorage.getItem('token')){

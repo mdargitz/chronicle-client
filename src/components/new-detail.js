@@ -1,9 +1,11 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { createCharacter, createSetting, createPlot } from '../actions/stories';
+import React from 'react';
 import './new-detail.css';
 
-//get type & storyId from parent
+//Properites from Parent: type (may be 'characters', 'settings', 'plots'), storyID
+//Properties from Redux: dispatch
+//Additional Component Details: Reusable
 export function AddNewDetail(props) {
 
   const handleSubmit = (e) => {
@@ -20,8 +22,8 @@ export function AddNewDetail(props) {
       <div className="new-detail-container">
         <i className="fas fa-plus-circle"></i>
         <form id={'new ' + props.type + ' form'} onSubmit={(e) => handleSubmit(e) }>
-          <label htmlFor="title" >New {props.type}</label>
-          <input required name={props.type + ' name'} type="input" id={props.type + ' name'} placeholder={`Type a new ${props.type} name here...`}/>
+          <label htmlFor={props.type + ' name'}  >New {props.type}</label>
+          <input aria-label={props.type + ' name'}  required name={props.type + ' name'} type="input" id={'new ' + props.type + ' name'} placeholder={`Type a new ${props.type} name here...`}/>
           <button type="submit">Create!</button>
         </form>
       </div>

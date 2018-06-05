@@ -1,13 +1,17 @@
-import React from 'react';
-import {Field, reduxForm} from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import Input from './input';
-import {required, notEmpty, noSpaces, minLength, maxLength, confirmPassword} from '../validators';
-import { registerUser } from '../actions/registration';
 import { login } from '../actions/login';
-import {withRouter} from 'react-router-dom';
+import React from 'react';
+import { registerUser } from '../actions/registration';
+import { required, notEmpty, noSpaces, minLength, maxLength, confirmPassword } from '../validators';
+import { withRouter } from 'react-router-dom';
 import './registration-form.css';
-import {connect} from 'react-redux';
 
+
+//Properites from Parent: history from with-router, 
+//Properties from Redux: error and loading details resulting from auth async actions
+//Additional Component Details: Not resuable
 export class RegistrationForm extends React.Component {
 
   onSubmit(values){

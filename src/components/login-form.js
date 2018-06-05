@@ -1,12 +1,15 @@
-import React from 'react';
-import {Field, reduxForm} from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import Input from './input';
-import {login} from '../actions/login';
+import { login } from '../actions/login';
+import React from 'react';
 import { required, notEmpty } from '../validators';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './login-form.css';
-import {connect} from 'react-redux';
 
+//Properites from Parent: ROUTE information (including history)
+//Properties from Redux: dispatch, redux-form information
+//Additional Component Details:Not reusable
 export class LoginForm extends React.Component {
   
   onSubmit(values){

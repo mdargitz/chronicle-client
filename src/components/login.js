@@ -1,12 +1,15 @@
-import React from 'react';
-import LoginForm from './login-form';
-import {Redirect, Link, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {login} from '../actions/login';
-import './login.css';
-import {openAbout} from '../actions/modal';
 import AboutModal from './about-modal';
+import { connect } from 'react-redux';
+import { login } from '../actions/login';
+import LoginForm from './login-form';
+import { openAbout } from '../actions/modal';
+import { Redirect, Link, withRouter } from 'react-router-dom';
+import React from 'react';
+import './login.css';
 
+//Properites from Parent: History from withRouter
+//Properties from Redux: dispatch, aboutOpen modal status
+//Additional Component Details: Not reusable
 export class Login extends React.Component {
 
   handleGuestLogin(){
@@ -46,6 +49,6 @@ const mapStateToProps = state => {
   return {
     isOpen : state.modal.aboutOpen
   };
-}
+};
 
 export default connect(mapStateToProps)((withRouter)(Login));

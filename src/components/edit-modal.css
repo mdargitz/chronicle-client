@@ -2,7 +2,7 @@
   background: white;
   border: 1px solid grey;
   border-radius: 5px;
-  color: red;
+  color: rgb(148, 0, 0);
   float: right;
   padding: 10px;
   font-size: 18px;
@@ -11,6 +11,6 @@
 }
 
 .cancel-btn:hover{
-  background: red;
+  background: rgb(65, 0, 0);
   color: white;
 }

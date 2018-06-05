@@ -1,10 +1,12 @@
-//reusable list element for characters, settings and plots
-
 import React from 'react';
 import {connect} from 'react-redux';
 import DetailCard from './detail-card';
 import './detail-list.css';
 
+//Properites from Parent: 'type' which may be 'characters', 'settings' or 'plots', 
+//story ID of given details
+//Properties from Redux: dispatch, array of pertinent details
+//Additional Component Details: Reusable
 export class DetailList extends React.Component {
   render(){
     let items = [];  
@@ -23,6 +25,7 @@ export class DetailList extends React.Component {
 
       return(
         <div className='detail-list'>
+          <h2 className='total-items' aria-live='polite'>Total {this.props.type}: {this.props.items.length}</h2>
           <ul>
             {items}
           </ul>

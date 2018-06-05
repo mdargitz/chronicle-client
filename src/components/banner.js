@@ -1,11 +1,15 @@
 import React from 'react';
 import './banner.css';
 
+//Properites from Parent: 'type' which may be 'characters', 'settings' or 'plots'
+//Properties from Redux: none
+//Additional Component Details: Reusable
 export default function Banner(props){
   //if storyImg passed, will use that as background, otherwise use type to determine background
   let bgimg = props.storyImg || '';
   let header = props.storyTitle;
-  let description = props.storyDescription || null; 
+  let description;
+  props.storyDescription ? description = <h2>{props.storyDescription}</h2> : description = null;
 
   if (props.type === 'characters'){
     bgimg = 'https://image.ibb.co/gMt7YJ/Webp_net_resizeimage.jpg';
@@ -30,7 +34,7 @@ export default function Banner(props){
     <div className="banner" style={{backgroundImage : `url(${bgimg})`}}>
       <div className="content-container"> 
         <h1>{header}</h1>
-        <h2>{description || 'no description'}</h2>
+        {description}
       </div>
     </div>);
 }

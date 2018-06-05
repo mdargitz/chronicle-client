@@ -1,9 +1,13 @@
-import React from 'react';
-import {withRouter} from 'react-router-dom';
-import './side-nav.css';
+import { connect } from 'react-redux';
 import { navigateTo } from '../actions/navigation';
-import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import React from 'react';
+import './side-nav.css';
 
+
+//Properites from Parent: storyID from withRouter
+//Properties from Redux: dispatch, display
+//Additional Component Details: Not resuable
 export function SideNav(props) {
   const {storyId} = props.match.params;
   const options = ['Characters', 'Settings', 'Plots', 'General'];
@@ -18,7 +22,6 @@ export function SideNav(props) {
 
   const handleChange = selected => {
     selected = selected.toLowerCase();
-
 
     if(selected === 'back'){
       props.history.push('/stories/');

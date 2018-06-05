@@ -1,11 +1,14 @@
-import React from 'react';
-import{connect} from 'react-redux';
-import {getStories, getPlots} from '../actions/stories';
-import Banner from './banner';
-import DetailList from './detail-list';
 import AddNewDetail from './new-detail';
+import Banner from './banner';
+import{connect} from 'react-redux';
+import DetailList from './detail-list';
+import {getStories, getPlots} from '../actions/stories';
 import mustLogin from './must-login';
+import React from 'react';
 
+//Properites from Parent: (from ROUTE) -storyID
+//Properties from Redux: all story data for specified ID, loading & error information from asych actions
+//Additional Component Details: Protected by login, not resuable
 export class Plots extends React.Component {
   
   componentDidMount(){
@@ -14,14 +17,23 @@ export class Plots extends React.Component {
   }
 
   render(){
+    //check that asyc fetch is complete
     if (this.props.storyData){
       return (
         <div>
-          <Banner type='plots'/>
-          <AddNewDetail type='plot' storyId={this.props.match.params.storyId}/>
-          {this.props.loading}
-          {this.props.error}
-          <DetailList type='plots' storyId={this.props.match.params.storyId}/>
+          <header role='banner'>
+            <Banner type='plots'/>
+          </header>
+          <main>
+            <section>
+              <AddNewDetail type='plot' storyId={this.props.match.params.storyId}/>
+              {this.props.loading}
+              {this.props.error}
+            </section>
+            <section>
+              <DetailList type='plots' storyId={this.props.match.params.storyId}/>
+            </section>
+          </main>
         </div>
       );
     }
