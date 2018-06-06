@@ -12,58 +12,75 @@ import './edit-modal.css';
 //Additional Component Details:React-Modal, Reusable
 export function EditModal(props){
 
-  const item = props.items.filter(item => item.id === props.id)[0];
+  let item = props.items[0];
+
+  if (props.itemId !== null){
+    item = props.items.filter(item => item.id === props.itemId)[0];
+  }
+  
 
   let formFields = [];
+  let initialValues ={};
 
   if (props.type === 'characters'){
+    
+    initialValues['name-' + item.name] = item.name;
+    initialValues['age-' + item.name] = item.age;
+    initialValues['occupation-' + item.name] = item.occupation;
+    initialValues['description-' + item.name] = item.description;
+    initialValues['personality-' + item.name] = item.personality;
+    initialValues['background-' + item.name] = item.background;   
+
     formFields = [
-      {name: item.name + '-name',
+      {name: 'name-' + item.name,
         label: 'Name',
         placeholder: item.name},
-      {name: item.name +'age',
+      {name: 'age-' + item.name,
         label: 'Age',
         placeholder: item.age},
-      {name: item.name +'occupation',
+      {name: 'occupation-' + item.name,
         label: 'Occupation',
         placeholder: item.occupation},
-      {name: item.name +'description',
+      {name: 'description-' + item.name,
         label: 'Description',
         placeholder: item.description,
         element: 'textarea'},
-      {name: item.name +'personality',
+      {name: 'personality-' + item.name,
         label: 'Personality',
         placeholder: item.personality,
         element: 'textarea'},
-      {name: item.name + 'background',
+      {name: 'background-' + item.name,
         label: 'Background',
         placeholder: item.background,
         element: 'textarea'},
-      {name: item.name + 'picture',
+      {name: 'picture- ' + item.name,
         label: 'Image URL',
         placeholder: item.picture}
     ];
   }
 
   else{
+    initialValues['name-' + item.name] = item.name;
+    initialValues['description-' + item.name] = item.description;
+    initialValues['notes-' + item.name] = item.notes; 
+
     formFields = [
-      {name: item.name + '-name',
+      {name: 'name-' + item.name,
         label: 'Name',
         placeholder: item.name},
-      {name: item.name +'description',
+      {name: 'description-' + item.name,
         label: 'Description',
         placeholder: item.description,
         element: 'textarea'},
-      {name: item.name +'notes',
+      {name: 'notes-' + item.name,
         label: 'Notes',
         placeholder: item.notes,
         element: 'textarea'},
-      {name: item.name +'picture',
+      {name: 'picture-' + item.name,
         label: 'Image URL',
         placeholder: item.picture}
     ];
-  }
-  
+  }  
 
   return (
 
@@ -85,7 +102,9 @@ export function EditModal(props){
           form={'edit' + props.type}
           fields={formFields}
           storyId={props.storyId}
-          id={props.id}/>
+          id={props.itemId}
+          initialValues={initialValues}
+        />
         <button className='cancel-btn' onClick={()=> props.dispatch(closeModal())}>Cancel</button>
       </section>
     </ReactModal>
@@ -96,6 +115,7 @@ const mapStateToProps = (state, props) => {
   return {
     isOpen : state.modal.isOpen,
     items : state.content.stories[props.storyId][props.type],
+    itemId : state.modal.id,
     error : state.content.error,
     loading : state.content.loading
   };

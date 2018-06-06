@@ -2,7 +2,8 @@ import {OPEN_MODAL, CLOSE_MODAL, OPEN_ABOUT, CLOSE_ABOUT} from '../actions/modal
 
 const initialState = {
   isOpen : false,
-  aboutOpen : false
+  aboutOpen : false,
+  id: null
 };
 
 const modalReducer = (state = initialState, action) => {
@@ -10,12 +11,14 @@ const modalReducer = (state = initialState, action) => {
 
     return {
       isOpen : true,
+      id : action.id
     };
   }
 
   if (action.type === CLOSE_MODAL){
     return {
       isOpen : false,
+      id : null
     };
   }
 

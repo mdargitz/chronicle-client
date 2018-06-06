@@ -1,8 +1,9 @@
 //Simple action to set openModal to **true** in redux store (applies to all 'edit' modals)
 export const OPEN_MODAL = 'OPEN_MODAL';
-export const openModal = () => {
+export const openModal = id => {
   return {
-    type: OPEN_MODAL
+    type: OPEN_MODAL,
+    id
   };
 };
 

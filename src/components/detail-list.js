@@ -12,6 +12,7 @@ export class DetailList extends React.Component {
     let items = [];  
     if(this.props.items){
       items= this.props.items.map((item,index) => {
+        
         return (
           <li key={index}>
             <DetailCard 
@@ -43,7 +44,8 @@ const mapStateToProps = (state, props) => {
   return {
     items : state.content.stories[props.storyId][props.type],
     loading : state.content.loading,
-    error : state.content.error
+    error : state.content.error,
+    id: state.modal.id
   };
 };
 

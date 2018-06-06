@@ -12,18 +12,22 @@ import './details-form.css';
 export class DetailsForm extends React.Component{
 
   onSubmit(values){
+    const newObj = {};
+    Object.keys(values).forEach((key) => {
+      newObj[key.split('-')[0]] = values[key];
+    });
 
     if (this.props.form === 'general'){
-      this.props.dispatch(updateStory(values, this.props.id));
+      this.props.dispatch(updateStory(newObj, this.props.id));
     }
     if(this.props.form === 'editcharacters'){
-      this.props.dispatch(updateCharacter(values, this.props.id, this.props.storyId));
+      this.props.dispatch(updateCharacter(newObj, this.props.id, this.props.storyId));
     }
     if(this.props.form === 'editsettings'){
-      this.props.dispatch(updateSetting(values, this.props.id, this.props.storyId));
+      this.props.dispatch(updateSetting(newObj, this.props.id, this.props.storyId));
     }
     if(this.props.form === 'editplots'){
-      this.props.dispatch(updatePlot(values, this.props.id, this.props.storyId));
+      this.props.dispatch(updatePlot(newObj, this.props.id, this.props.storyId));
     }
     this.props.dispatch(closeModal());
     
@@ -49,6 +53,7 @@ export class DetailsForm extends React.Component{
 
     return(
       <form 
+        
         className='details-form'
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         {succeeded}

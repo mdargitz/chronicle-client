@@ -18,14 +18,15 @@ export class DetailCard extends React.Component {
   }
 
   handleModal(){
-    this.props.dispatch(openModal());
+    this.props.dispatch(openModal(this.props.id));
   }
 
   render(){
+    
     return (
       <div className='detail-card'>
         <section>
-          <EditModal type={this.props.type} id={this.props.id} storyId={this.props.storyId}/>
+          <EditModal type={this.props.type} storyId={this.props.storyId}/>
         </section>
         <section>
           <img src={this.props.img} alt={this.props.name +' character icon or picture'} />
