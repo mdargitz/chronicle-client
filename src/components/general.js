@@ -15,7 +15,18 @@ export class General extends React.Component {
   }
 
   render() {
+
     if (this.props.story) {
+      
+      const initialValues = {
+        title : this.props.story.title,
+        description: this.props.story.description,
+        genre: this.props.story.genre,
+        period: this.props.story.period,
+        plotsummary: this.props.story.plotsummary,
+        settingsummary: this.props.story.settingsummary,
+      };
+
       return (
         <div>
           <header role='banner'>
@@ -31,7 +42,9 @@ export class General extends React.Component {
               {this.props.loading}
             </section>
             <section>
-              <DetailsForm id={this.props.match.params.storyId} 
+              <DetailsForm 
+                initialValues={initialValues}
+                id={this.props.match.params.storyId} 
                 fields={[{name : 'title',
                   label : 'Title',
                   placeholder: this.props.story.title}, 
