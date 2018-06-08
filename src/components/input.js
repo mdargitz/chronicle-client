@@ -15,7 +15,6 @@ export default class Input extends React.Component{
 
   render(){
     const Element = this.props.element;
-
     //show errors above field
     let error;
     if(this.props.meta.touched && this.props.meta.error){
@@ -42,6 +41,7 @@ export default class Input extends React.Component{
           placeholder={this.props.placeholder || null}
           rows='4'
           cols='40'
+          type = {this.props.type || 'text'}
         >
 
           {this.props.children}
