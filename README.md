@@ -11,7 +11,7 @@ Welcome to Chronicle! This web app is a writer's tool to help organize the chara
 
 In all users are able to:
 * **Create** multiple new stories and add general information, characters, world building and plot points
-* **Update** existing stories at any time due to database persistance
+* **Update** existing stories at any time due to database persistence
 * **Delete** unnecessary story aspects or the entire story itself
 * **Protect** your ideas behind a secure login.
 
@@ -44,7 +44,7 @@ To run locally, please download the repository and run `npm install` to download
 
 From a top level, there are three areas of note:
 * `/public` - This folder holds the index.html, favicon and manifest
-* `package.json` - This file ennumerates all dependencies of the app and their versions
+* `package.json` - This file enumerates all dependencies of the app and their versions
 * `/src` - The source folder is where most of the hard work happens, and requires further break down.
 
 
@@ -67,3 +67,24 @@ From a top level, there are three areas of note:
 * `/src/setupTests.js` : Set up Jest testing with the correct adapter
 * `/src/store.js` : Combine all reducers and make state available in the redux store
 * `/src/validators.js` : Helper functions to assist inline form validation
+
+---
+
+### Server
+Repository : [https://github.com/mdargitz/chronicle-server](https://github.com/mdargitz/chronicle-server)
+
+The server is written in node.js and express and can similarly be broken into 4 main categories:
+* `/db/` : Includes all database seed functions and scripts. Specifically scripts to drop existing tables, create new tables and (optionally) insert seed data.
+* `/passport/` : Includes configuration files to set up local and jwt authentication- they also specify that the password not be returned on successful authentication
+* `/routes/` : All express routes are in this folder that are then mounted to `server.js`. They include the following: 
+`/api/users/`
+`/api/auth/`
+`/api/stories/`
+`/api/characters/`
+`/api/settings/`
+`/api/plots/`
+* `/test/` : All test files for the above routes + `server.js.test` using Mocha, Chai.js and Chai-http.
+Finally there are a few other files of note:
+* `knex.js` and `knexfile.js`: Configure the knex connection to the postgres database given the current environment
+* `package.json` : All dependencies and version numbers for the server
+* `server.js` : Instantiates the express app, set up CORS and logging, mount routes and offer handlers for 404's and errors
