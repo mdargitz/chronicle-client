@@ -12,19 +12,19 @@ export default function Banner(props){
   props.storyDescription ? description = <h2>{props.storyDescription}</h2> : description = null;
 
   if (props.type === 'characters'){
-    bgimg = 'https://image.ibb.co/gMt7YJ/Webp_net_resizeimage.jpg';
+    bgimg = 'https://farm8.staticflickr.com/7085/6997079424_1fb2fc54d2_c.jpg';
     header = 'Characters';
   }
   if(props.type === 'settings'){
-    bgimg = 'https://image.ibb.co/eX6pfy/Webp_net_resizeimage_1.jpg';
+    bgimg = 'https://farm2.staticflickr.com/1558/24183046109_29594c9486_c.jpg';
     header = 'Settings';
   }
   if(props.type === 'plots'){
-    bgimg= 'https://image.ibb.co/hpX9DJ/Webp_net_resizeimage_2.jpg';
+    bgimg= 'https://farm1.staticflickr.com/889/27562601448_766e862dd2_c.jpg';
     header = 'Plot Points';
   }
   if (props.type === 'stories'){
-    bgimg = 'https://image.ibb.co/gyKQQ8/Webp_net_resizeimage_5.jpg';
+    bgimg = 'https://farm4.staticflickr.com/3947/33543263882_4d21a9137e_c.jpg';
     header = 'Chronicle';
     description = 'Add one or more stories below and get writing!';
   }

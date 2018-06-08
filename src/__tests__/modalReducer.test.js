@@ -26,6 +26,7 @@ describe('modalReducer', ()=>{
       state = modalReducer(state, openModal(4));
       expect(state).toEqual({
         isOpen : true,
+        aboutOpen : false,
         id
       });
     });
@@ -37,6 +38,7 @@ describe('modalReducer', ()=>{
       state = modalReducer(state, closeModal());
       expect(state).toEqual({
         isOpen : false,
+        aboutOpen : false,
         id : null
       });
     });
@@ -47,7 +49,9 @@ describe('modalReducer', ()=>{
       let state;
       state = modalReducer(state, openAbout());
       expect(state).toEqual({
-        aboutOpen: true
+        aboutOpen: true,
+        isOpen: false,
+        id : null
       });
     });
   });
@@ -57,7 +61,9 @@ describe('modalReducer', ()=>{
       let state;
       state = modalReducer(state, closeAbout());
       expect(state).toEqual({
-        aboutOpen: false
+        aboutOpen: false,
+        isOpen : false,
+        id : null
       });
     });
   });

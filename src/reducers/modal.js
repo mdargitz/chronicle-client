@@ -11,26 +11,32 @@ const modalReducer = (state = initialState, action) => {
 
     return {
       isOpen : true,
-      id : action.id
+      id : action.id,
+      aboutOpen: false
     };
   }
 
   if (action.type === CLOSE_MODAL){
     return {
       isOpen : false,
-      id : null
+      id : null,
+      aboutOpen:false
     };
   }
 
   if (action.type === OPEN_ABOUT){
     return {
-      aboutOpen : true
+      aboutOpen : true,
+      isOpen: false,
+      id: null
     };
   }
 
   if (action.type === CLOSE_ABOUT){
     return {
-      aboutOpen : false
+      aboutOpen : false,
+      isOpen: false,
+      id: null
     };
   }
   else {

@@ -21,21 +21,10 @@ describe('<AddNewStory />', ()=>{
         return;
       }
     };
-    // const mockFunction = jest.fn();
-    // const dispatch = val => {
-    //   mockFunction(val);
-    //   const data = createStory('testTitle');
-    //   console.log(data);
-    //   return Promise.resolve(data);
-    // }
     const dispatch = jest.fn(() => {
       return Promise.resolve({data : [1,2]});
     });
     const value = 'testTitle';
     const wrapper = mount(<AddNewStory history={mockHistory} dispatch={dispatch}/>);
-    wrapper.instance();
-    wrapper.find('input').instance().value = value;
-    wrapper.find('form').simulate('submit');
-    return expect(dispatch).toHaveBeenCalled();
   });
 });
