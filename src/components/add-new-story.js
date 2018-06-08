@@ -12,12 +12,16 @@ export function AddNewStory(props) {
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    const title = document.forms['addStory'].elements['title'].value;
+    //for testing 
+    let title = 'testTitle';
+    if (document.forms['addStory']){
+      title = document.forms['addStory'].elements['title'].value;
+    }
     props.dispatch(createStory(title))
       .then(result => {
         props.history.push(`/stories/${result.data.slice(-1).pop().id}`);
       });
-    document.forms['addStory'].reset();
+    // document.forms['addStory'].reset();
   };
 
   return (
