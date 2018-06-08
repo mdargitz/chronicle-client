@@ -20,6 +20,34 @@ In all users are able to:
 Screenshots
 ------
 
+### Login
+![Chronicle Login page](https://i.imgur.com/HbEwyu5.jpg "Login")
+
+### Register
+![Chronicle Register page](https://i.imgur.com/YjIHhCP.png "Register")
+
+### All Stories
+![Chronicle all stories page](https://i.imgur.com/wD374rI.png "All Stories")
+
+### General Story Info
+![Chronicle general page](https://i.imgur.com/7uJGsXg.png "General")
+
+### Characters
+![Chronicle Characters page](https://i.imgur.com/J9ZRkq3.png "Characters")
+
+### Settings
+![Chronicle Settings page](https://i.imgur.com/ZYkTUvu.png "Settings")
+
+### Plot Points
+![Chronicle Plots page](https://i.imgur.com/i55g8Uw.png "Plots")
+
+### Edit Details
+![Chronicle Edit Modal](https://i.imgur.com/dh8P05N.png "Edit")
+
+### About
+![Chronicle About Modal](https://i.imgur.com/HGipTmm.png "About")
+
+
 Tech Stack
 ------
 Chronicle was created with the following languages, libraries and frameworks:
