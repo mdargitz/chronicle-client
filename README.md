@@ -4,6 +4,8 @@ Chronicle - A Writer's Aide
 
 **Server** : [https://chronicle-server.herokuapp.com/](https://chronicle-server.herokuapp.com/)
 
+**Server Repository** : [https://github.com/mdargitz/chronicle-server](https://github.com/mdargitz/chronicle-server)
+
 
 Summary
 ------
