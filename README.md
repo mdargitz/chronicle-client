@@ -64,6 +64,42 @@ Chronicle was created with the following languages, libraries and frameworks:
 
 **Deployment** : [Heroku](https://www.herokud.com/), [Netlify](https://www.netlify.com/)
 
+API Documentation
+------
+**/api/auth**
+- POST '/' -> Requires 'username' and 'password' parameters- returns an authentication token
+
+**/api/users**
+- POST '/' -> Requires 'username' and 'password' parameters- returns the new user
+
+**/api/stories** (protected)
+- GET '/' -> Returns all stories of authenticated user
+- GET '/:id' -> Requires ID of story - returns specified story
+- PUT '/:id' -> Requires ID of story - returns updated story
+- POST '/' -> Requires 'title' - returns new story
+- DELETE '/:id' -> Requires ID of story - returns 204 and empty array
+
+**/api/characters** (protected)
+- GET '/:storyID' -> Requires Id of owned story- returns all characters of given story
+- GET '/:storyID/:id' -> Requires ID of story and ID of character - returns specified character
+- PUT '/:storyID/:id' -> Requires ID of story and ID of character- returns updated character
+- POST '/:storyID' -> Requires 'name' - returns new character
+- DELETE '/:storyID/:id' -> Requires ID of story and ID of character- returns 204 and empty array
+
+**/api/settings** (protected)
+- GET '/:storyID' -> Requires Id of owned story- returns all settings of given story
+- GET '/:storyID/:id' -> Requires ID of story and ID of setting - returns specified setting
+- PUT '/:storyID/:id' -> Requires ID of story and ID of setting- returns updated setting
+- POST '/:storyID' -> Requires 'name' - returns new setting
+- DELETE '/:storyID/:id' -> Requires ID of story and ID of setting- returns 204 and empty array
+
+**/api/plots** (protected)
+- GET '/:storyID' -> Requires Id of owned story- returns all plot points of given story
+- GET '/:storyID/:id' -> Requires ID of story and ID of plot point - returns specified plot point
+- PUT '/:storyID/:id' -> Requires ID of story and ID of plot point- returns updated plot point
+- POST '/:storyID' -> Requires 'name' - returns new plot point
+- DELETE '/:storyID/:id' -> Requires ID of story and ID of plot point- returns 204 and empty array
+
 Code Tour
 ------
 ### Client  
