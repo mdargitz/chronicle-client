@@ -6,6 +6,7 @@ import mustLogin from './must-login';
 import React from 'react';
 import StoryList from './story-list';
 import './stories.css';
+import { openAbout } from '../actions/modal';
 
 //Properites from Parent: none
 //Properties from Redux: all stories details, loading & error states produced by getStories async action
@@ -13,6 +14,7 @@ import './stories.css';
 export class Stories extends React.Component {
   componentWillMount(){
     this.props.dispatch(getStories());
+    this.props.dispatch(openAbout());
   }
 
   render(){

@@ -3,6 +3,21 @@
   margin: 20px 0;
 }
 
+.about-content h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.about-content li {
+  margin: 15px 0;
+}
+
+.about-content li::before {
+  content: '•';
+}
+
 .about-content p {
   margin: 20px 0;
   text-align: center;

@@ -87,7 +87,7 @@ export function EditModal(props){
     <ReactModal 
       isOpen={props.isOpen}
       onRequestClose={() => props.dispatch(closeModal())}
-      contentLabel={'Edit details for '}
+      contentLabel={'Edit details'}
       shouldFocusAfterRender={true}
       shouldCloseOnOverlayClick={false}
       appElement={document.getElementById('root')}

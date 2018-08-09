@@ -20,10 +20,15 @@ export function AboutModal(props){
           <h1>Planner, Manager, Builder</h1>
         </header>
         <section>
-          <p>The writing process from author to author is as different as the stories themselves.</p>
           <p>While some writers prefer to build their worlds on the fly, others may plan every pebble.</p>
           <p>Chronicle seeks to assist everyone on this spectrum, by providing a centralized hub for all your thoughts, notes and concepts.</p>
-          <p>Use Chronicle to plan your stories, to manage what you already have and to see what areas need greater detail</p>
+          <h3>Quick Start</h3>
+          <ol>
+            <li> Create a new story by typing in your story name and clicking -Create Story-.</li>
+            <li> You will be redirected to a general info page- fill out whatever details you like!</li>
+            <li> Finally, in the upper right hand corner, you will be able to navigate around between your characters, settings and plot points.</li>
+            <li> Add, edit and delete these just the same as you would a larger story.</li>
+          </ol>
           <h2>Happy Writing~!</h2>
           <button className='about-button' onClick={()=> props.dispatch(closeAbout())}>Got it!</button>
         </section>
